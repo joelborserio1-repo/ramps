@@ -72,7 +72,7 @@ export const META_PIXEL_ID = '';
 /* --- Trust bar + stats --------------------------------------------------- */
 // [[ STATS ]] — DO NOT fabricate. Confirm every figure with the client.
 export const STATS = {
-  googleRating: '[[ 4.x ]]', // e.g. '4.9'
+  googleRating: '5.0', // client-confirmed
   googleReviewCount: '[[ NN ]]', // e.g. '48'
   rampsInstalled: '[[ NNN ]]', // e.g. '500'
   yearsInHunter: '[[ NN ]]', // e.g. '12'
@@ -84,7 +84,7 @@ export const STATS = {
 export const COUNTERS = [
   { value: '[[ NNN ]]', suffix: '+', label: 'Ramps installed across Newcastle & the Hunter' },
   { value: '[[ NN ]]', suffix: '', label: 'Years serving the local community' },
-  { value: '[[ 4.x ]]', suffix: '★', label: 'Average Google rating' },
+  { value: '5.0', suffix: '★', label: 'Average Google rating' },
   { value: '[[ NN ]]', suffix: '%', label: 'Recycled-rubber, non-slip ramps' },
 ];
 

@@ -34,12 +34,18 @@ const jsonLd = {
     addressRegion: 'NSW',
     addressCountry: 'AU',
   },
-  // Remove aggregateRating until the client confirms real, substantiated figures.
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: STATS.googleRating,
-    reviewCount: STATS.googleReviewCount,
-  },
+  // Only emit aggregateRating once BOTH the rating and review count are real
+  // numbers — an aggregateRating without a valid count is invalid structured
+  // data (and showing a fabricated count would be a policy problem).
+  ...(isFinite(Number(STATS.googleRating)) && isFinite(Number(STATS.googleReviewCount))
+    ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: STATS.googleRating,
+          reviewCount: STATS.googleReviewCount,
+        },
+      }
+    : {}),
   makesOffer: [
     'Residential access ramps',
     'Aged-care access ramps',
