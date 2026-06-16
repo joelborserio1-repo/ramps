@@ -71,7 +71,7 @@ Anything marked `[[ PLACEHOLDER ]]` must be confirmed by the client before launc
 6. `HowItWorks` — 3 steps connected by the ramp line.
 7. `Stats` — animated count-up.
 8. `Reviews` — auto-sliding, swipeable, accessible carousel.
-9. `FinalCTA` — orange band, repeated offer.
+9. `FinalCTA` — teal band, repeated offer.
 10. `Footer` — service area, contact, ABN/licence.
 11. `MobileActionBar` — fixed bottom **Call Now / Free Quote** bar (mobile only).
 

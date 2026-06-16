@@ -2,14 +2,14 @@
 import { CONTACT } from '../config';
 ---
 
-<section class="relative overflow-hidden bg-brand-black-pure py-20 sm:py-24">
+<section class="relative overflow-hidden bg-white py-20 sm:py-24">
   <div class="container-page">
     <div
-      class="relative overflow-hidden rounded-3xl bg-orange-gradient px-6 py-14 text-center shadow-orange-glow-lg sm:px-12 reveal"
+      class="relative overflow-hidden rounded-3xl bg-teal-gradient px-6 py-14 text-center shadow-teal-glow-lg sm:px-12 reveal"
     >
       <!-- subtle ramp geometry overlay -->
       <div class="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
-        <svg class="absolute -right-10 -top-10 h-64 w-64 text-brand-black-pure" viewBox="0 0 64 56" fill="none">
+        <svg class="absolute -right-10 -top-10 h-64 w-64 text-white" viewBox="0 0 64 56" fill="none">
           <rect x="4" y="40" width="11" height="12" rx="1.5" fill="currentColor" />
           <rect x="19" y="30" width="11" height="22" rx="1.5" fill="currentColor" />
           <rect x="34" y="20" width="11" height="32" rx="1.5" fill="currentColor" />
@@ -18,23 +18,23 @@ import { CONTACT } from '../config';
       </div>
 
       <div class="relative">
-        <h2 class="mx-auto max-w-2xl text-3xl font-extrabold text-brand-black-pure sm:text-4xl">
+        <h2 class="mx-auto max-w-2xl text-3xl font-extrabold text-white sm:text-4xl">
           Ready for safe, easy access? Get your free quote today.
         </h2>
-        <p class="mx-auto mt-4 max-w-xl text-brand-black-pure/80">
+        <p class="mx-auto mt-4 max-w-xl text-white/85">
           Free on-site measure and quote from a local, fully-insured Hunter team. No obligation.
         </p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
             href="#quote"
-            class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-brand-black-pure px-8 py-4 text-lg font-bold text-brand-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-black"
+            class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-bold text-brand-teal-deep shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card"
           >
             Get My Free Quote
           </a>
           <a
             href={`tel:${CONTACT.phone.tel}`}
             data-call-source="final-cta"
-            class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border-2 border-brand-black-pure px-7 py-4 text-lg font-bold text-brand-black-pure transition-colors hover:bg-brand-black-pure hover:text-brand-white"
+            class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border-2 border-white px-7 py-4 text-lg font-bold text-white transition-colors hover:bg-white hover:text-brand-teal-deep"
           >
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path

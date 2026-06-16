@@ -3,18 +3,18 @@ import { CRM_WEBHOOK_URL, CRM_IFRAME_EMBED } from '../config';
 
 const useEmbed = CRM_IFRAME_EMBED.trim().length > 0;
 const inputClass =
-  'w-full rounded-xl border border-white/15 bg-brand-black-pure/60 px-4 py-3.5 text-base text-brand-white placeholder:text-brand-grey/70 transition-colors focus:border-brand-orange focus:bg-brand-black-pure min-h-[44px]';
-const labelClass = 'mb-1.5 block text-sm font-semibold text-brand-white';
-const errClass = 'hidden mt-1.5 text-sm text-orange-300';
+  'w-full rounded-xl border border-brand-line bg-brand-mist px-4 py-3.5 text-base text-brand-navy placeholder:text-brand-slate/60 transition-colors focus:border-brand-teal focus:bg-white min-h-[44px]';
+const labelClass = 'mb-1.5 block text-sm font-semibold text-brand-navy';
+const errClass = 'hidden mt-1.5 text-sm text-brand-coral-deep';
 ---
 
 <div
   id="quote"
-  class="relative rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-card backdrop-blur-sm sm:p-8 scroll-mt-24"
+  class="relative rounded-3xl border border-brand-line bg-white p-6 shadow-card sm:p-8 scroll-mt-24"
 >
-  <!-- subtle orange glow on the card edge -->
+  <!-- friendly teal accent bar across the top of the card -->
   <div
-    class="pointer-events-none absolute -inset-px rounded-3xl bg-orange-gradient opacity-[0.07] blur-sm"
+    class="pointer-events-none absolute inset-x-0 top-0 h-1.5 rounded-t-3xl bg-teal-gradient"
     aria-hidden="true"
   >
   </div>
@@ -22,7 +22,7 @@ const errClass = 'hidden mt-1.5 text-sm text-orange-300';
   <div class="relative">
     <div class="mb-5">
       <h2 class="text-2xl font-extrabold sm:text-3xl">Get your free, no-obligation quote</h2>
-      <p class="mt-2 text-sm text-brand-grey">
+      <p class="mt-2 text-sm text-brand-slate">
         Free on-site measure &amp; quote. We usually reply within 1 business hour.
       </p>
     </div>
@@ -45,7 +45,7 @@ const errClass = 'hidden mt-1.5 text-sm text-orange-300';
             <div
               id="form-error-banner"
               role="alert"
-              class="hidden rounded-xl border border-orange-400/40 bg-orange-500/10 px-4 py-3 text-sm text-orange-200"
+              class="hidden rounded-xl border border-brand-coral/40 bg-brand-coral/10 px-4 py-3 text-sm text-brand-coral-deep"
             >
               Sorry, something went wrong sending your details. Please call us instead — we'd love to help.
             </div>
@@ -81,7 +81,7 @@ const errClass = 'hidden mt-1.5 text-sm text-orange-300';
 
             <div>
               <label class={labelClass} for="message">
-                Message or timeframe <span class="font-normal text-brand-grey">(optional)</span>
+                Message or timeframe <span class="font-normal text-brand-slate">(optional)</span>
               </label>
               <textarea class={inputClass} id="message" name="message" rows="2" placeholder="e.g. Need a ramp for Mum's front steps soon" />
             </div>
@@ -95,26 +95,26 @@ const errClass = 'hidden mt-1.5 text-sm text-orange-300';
             <button type="submit" class="btn-primary relative w-full text-lg">
               <span class="btn-label">Get My Free Quote</span>
               <span class="btn-spinner absolute inset-0 hidden items-center justify-center" aria-hidden="true">
-                <svg class="h-6 w-6 animate-spin text-brand-black-pure" viewBox="0 0 24 24" fill="none">
+                <svg class="h-6 w-6 animate-spin text-white" viewBox="0 0 24 24" fill="none">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                   <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z" />
                 </svg>
               </span>
             </button>
 
-            <p id="form-reassure" class="text-center text-xs text-brand-grey">
+            <p id="form-reassure" class="text-center text-xs text-brand-slate">
               Free, no-obligation quote. Your details are only used to contact you about your enquiry.
             </p>
           </form>
 
           <div id="form-success" class="hidden text-center py-6 focus:outline-none">
-            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-orange-gradient">
-              <svg class="h-7 w-7 text-brand-black-pure" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-teal-gradient">
+              <svg class="h-7 w-7 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
             <h3 class="text-2xl font-extrabold">Thanks — we've got your details!</h3>
-            <p class="mt-2 text-brand-grey">
+            <p class="mt-2 text-brand-slate">
               One of our local team will call you shortly to arrange your free on-site measure and quote.
             </p>
           </div>

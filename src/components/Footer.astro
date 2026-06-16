@@ -3,32 +3,32 @@ import { CONTACT, SERVICE_AREA, LEGAL, SITE } from '../config';
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-white/10 bg-brand-black-pure pb-28 pt-16 sm:pb-16">
+<footer class="border-t border-brand-line bg-brand-cloud pb-28 pt-16 sm:pb-16">
   <div class="container-page">
     <div class="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
       <div>
         <img src="/ramp-ability-logo.svg" alt="Ramp Ability" width="180" height="40" class="h-10 w-auto" />
-        <p class="mt-4 max-w-xs text-sm leading-relaxed text-brand-grey">
-          Safe, compliant access ramps designed, made and installed across the Hunter Region.
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-brand-slate">
+          Safe, friendly access ramps designed, made and installed across the Hunter Region.
           Residential, commercial and aged care.
         </p>
       </div>
 
       <div>
-        <h3 class="text-sm font-bold uppercase tracking-wider text-brand-white">Service area</h3>
-        <ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-brand-grey">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-brand-navy">Service area</h3>
+        <ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-brand-slate">
           {SERVICE_AREA.map((s) => <li>{s}</li>)}
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-bold uppercase tracking-wider text-brand-white">Get in touch</h3>
+        <h3 class="text-sm font-bold uppercase tracking-wider text-brand-navy">Get in touch</h3>
         <ul class="mt-4 space-y-2 text-sm">
           <li>
             <a
               href={`tel:${CONTACT.phone.tel}`}
               data-call-source="footer"
-              class="font-semibold text-brand-white transition-colors hover:text-brand-orange"
+              class="font-semibold text-brand-navy transition-colors hover:text-brand-teal-deep"
             >
               {CONTACT.phone.display}
             </a>
@@ -36,7 +36,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href={`mailto:${CONTACT.email}`}
-              class="text-brand-grey transition-colors hover:text-brand-orange"
+              class="text-brand-slate transition-colors hover:text-brand-teal-deep"
             >
               {CONTACT.email}
             </a>
@@ -49,14 +49,14 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-brand-grey sm:flex-row sm:items-center sm:justify-between"
+      class="mt-12 flex flex-col gap-3 border-t border-brand-line pt-6 text-xs text-brand-slate sm:flex-row sm:items-center sm:justify-between"
     >
       <p>
         © {year} {SITE.name}. All rights reserved.
         <span class="mx-1">·</span>{LEGAL.abn}
         <span class="mx-1">·</span>{LEGAL.licence}
       </p>
-      <p class="text-brand-grey/70">
+      <p class="text-brand-slate/70">
         Residential · Commercial · Aged Care — {SITE.region}
       </p>
     </div>

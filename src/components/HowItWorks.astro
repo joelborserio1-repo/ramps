@@ -18,7 +18,7 @@ const steps = [
 ];
 ---
 
-<section id="how" class="section bg-brand-black">
+<section id="how" class="section bg-white">
   <div class="container-page">
     <div class="mx-auto max-w-2xl text-center reveal">
       <p class="eyebrow">How it works</p>
@@ -28,7 +28,7 @@ const steps = [
     <ol class="relative mt-14 grid gap-10 md:grid-cols-3" data-stagger>
       <!-- connecting ramp line (desktop) -->
       <div
-        class="pointer-events-none absolute left-[16%] right-[16%] top-7 hidden h-0.5 bg-gradient-to-r from-brand-orange/0 via-brand-orange/60 to-brand-orange/0 md:block"
+        class="pointer-events-none absolute left-[16%] right-[16%] top-7 hidden h-0.5 bg-gradient-to-r from-brand-teal/0 via-brand-teal/50 to-brand-teal/0 md:block"
         aria-hidden="true"
       >
       </div>
@@ -36,11 +36,11 @@ const steps = [
       {
         steps.map((step) => (
           <li class="relative flex flex-col items-center text-center">
-            <span class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-gradient text-2xl font-extrabold text-brand-black-pure shadow-orange-glow">
+            <span class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-gradient text-2xl font-extrabold text-white shadow-teal-glow">
               {step.n}
             </span>
             <h3 class="mt-5 text-lg font-bold">{step.title}</h3>
-            <p class="mt-2 max-w-xs text-sm leading-relaxed text-brand-grey">{step.copy}</p>
+            <p class="mt-2 max-w-xs text-sm leading-relaxed text-brand-slate">{step.copy}</p>
           </li>
         ))
       }

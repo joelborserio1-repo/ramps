@@ -26,25 +26,25 @@ const { variant = 'icon', class: className = '' } = Astro.props;
     <!-- glow -->
     <ellipse cx="120" cy="150" rx="110" ry="30" fill="url(#rampGlow)" opacity="0.5" />
     <!-- ascending steps -->
-    <rect class="ramp-step" x="10" y="150" width="34" height="34" rx="4" fill="#F5821F" />
-    <rect class="ramp-step" x="50" y="118" width="34" height="66" rx="4" fill="#F5821F" />
-    <rect class="ramp-step" x="90" y="86" width="34" height="98" rx="4" fill="#FF7A00" />
-    <rect class="ramp-step" x="130" y="54" width="34" height="130" rx="4" fill="#FF7A00" />
-    <rect class="ramp-step" x="170" y="22" width="34" height="162" rx="4" fill="#FF7A00" />
+    <rect class="ramp-step" x="10" y="150" width="34" height="34" rx="4" fill="#13B5B1" />
+    <rect class="ramp-step" x="50" y="118" width="34" height="66" rx="4" fill="#0EA5A0" />
+    <rect class="ramp-step" x="90" y="86" width="34" height="98" rx="4" fill="#0EA5A0" />
+    <rect class="ramp-step" x="130" y="54" width="34" height="130" rx="4" fill="#0B7C79" />
+    <rect class="ramp-step" x="170" y="22" width="34" height="162" rx="4" fill="#0B7C79" />
     <!-- ramp slope: "draws" in -->
     <path
       class="ramp-slope"
       d="M14 150 L204 26"
-      stroke="#FFFFFF"
+      stroke="#FF6B57"
       stroke-width="4"
       stroke-linecap="round"
     />
     <!-- traveller dot that rides up the ramp -->
-    <circle class="ramp-traveller" cx="14" cy="150" r="8" fill="#FFFFFF" />
+    <circle class="ramp-traveller" cx="14" cy="150" r="8" fill="#FF6B57" />
     <defs>
       <radialGradient id="rampGlow">
-        <stop offset="0%" stop-color="#FF7A00" />
-        <stop offset="100%" stop-color="#FF7A00" stop-opacity="0" />
+        <stop offset="0%" stop-color="#0EA5A0" />
+        <stop offset="100%" stop-color="#0EA5A0" stop-opacity="0" />
       </radialGradient>
     </defs>
   </svg>

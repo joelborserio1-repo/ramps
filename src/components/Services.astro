@@ -17,12 +17,12 @@ const services = [
 ];
 ---
 
-<section id="services" class="section bg-brand-black">
+<section id="services" class="section bg-white">
   <div class="container-page">
     <div class="mx-auto max-w-2xl text-center reveal">
       <p class="eyebrow">What we build</p>
       <h2 class="mt-4 text-3xl sm:text-4xl">Ramps for every kind of access</h2>
-      <p class="mt-4 text-brand-grey">
+      <p class="mt-4 text-brand-slate">
         Residential, commercial and aged-care ramps — designed, made and installed by a local
         Hunter team.
       </p>
@@ -32,14 +32,14 @@ const services = [
       {
         services.map((s) => (
           <article class="card card-hover group flex flex-col">
-            <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange transition-colors group-hover:bg-brand-orange group-hover:text-brand-black-pure">
+            <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal-deep transition-colors group-hover:bg-teal-gradient group-hover:text-white">
               <RampMotif class="h-7 w-7" />
             </div>
             <h3 class="text-xl font-bold">{s.title}</h3>
-            <p class="mt-3 flex-1 text-sm leading-relaxed text-brand-grey">{s.copy}</p>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-brand-slate">{s.copy}</p>
             <a
               href="#quote"
-              class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange transition-colors hover:text-brand-orange-bright"
+              class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-teal-deep transition-colors hover:text-brand-teal"
             >
               Get a quote
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">

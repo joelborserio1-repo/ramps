@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  PLACEHOLDER LOGO. Swap for the supplied ramp-ability-logo.png (or an
-  optimised SVG export). The orange stepped triangle IS the ramp motif and is
-  reused across the site. Keep clear space around it; never stretch.
+  PLACEHOLDER LOGO, recoloured for the friendly light theme (teal + coral on
+  white). Swap for the supplied ramp-ability-logo.png. NOTE: the real logo is
+  black/orange — on a white background check its contrast and, if needed, ask
+  the client for a version that suits the lighter palette. The orange stepped
+  triangle IS the ramp motif and is reused across the site.
 -->
 <svg width="320" height="72" viewBox="0 0 320 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ramp Ability">
   <!-- Ramp motif: ascending steps forming a ramp/triangle -->
   <g>
-    <rect x="2" y="50" width="14" height="14" rx="2" fill="#F5821F"/>
-    <rect x="18" y="38" width="14" height="26" rx="2" fill="#F5821F"/>
-    <rect x="34" y="26" width="14" height="38" rx="2" fill="#FF7A00"/>
-    <rect x="50" y="14" width="14" height="50" rx="2" fill="#FF7A00"/>
+    <rect x="2" y="50" width="14" height="14" rx="2" fill="#0EA5A0"/>
+    <rect x="18" y="38" width="14" height="26" rx="2" fill="#0EA5A0"/>
+    <rect x="34" y="26" width="14" height="38" rx="2" fill="#0B7C79"/>
+    <rect x="50" y="14" width="14" height="50" rx="2" fill="#0B7C79"/>
     <!-- ramp slope line -->
-    <path d="M2 50 L64 14" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+    <path d="M2 50 L64 14" stroke="#FF6B57" stroke-width="3" stroke-linecap="round"/>
   </g>
   <!-- Wordmark -->
-  <text x="82" y="38" font-family="Sora, 'Segoe UI', sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#FFFFFF">RAMP</text>
-  <text x="82" y="62" font-family="Sora, 'Segoe UI', sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#F5821F">ABILITY</text>
+  <text x="82" y="38" font-family="Sora, 'Segoe UI', sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#0F2A3A">RAMP</text>
+  <text x="82" y="62" font-family="Sora, 'Segoe UI', sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#0EA5A0">ABILITY</text>
 </svg>

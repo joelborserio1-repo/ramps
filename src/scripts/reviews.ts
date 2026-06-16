@@ -28,7 +28,7 @@ export function initReviewsCarousel() {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.className =
-        'h-2.5 w-2.5 rounded-full bg-white/25 transition-all duration-300 hover:bg-white/50';
+        'h-2.5 w-2.5 rounded-full bg-brand-line transition-all duration-300 hover:bg-brand-slate/50';
       dot.setAttribute('aria-label', `Go to review ${i + 1}`);
       dot.addEventListener('click', () => go(i, true));
       dotsWrap.appendChild(dot);
@@ -47,7 +47,7 @@ export function initReviewsCarousel() {
     });
     dots.forEach((d, i) => {
       const active = i === index;
-      d.classList.toggle('bg-brand-orange', active);
+      d.classList.toggle('bg-brand-teal-deep', active);
       d.classList.toggle('w-6', active);
       d.setAttribute('aria-current', String(active));
     });

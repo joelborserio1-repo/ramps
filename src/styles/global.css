@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
     scroll-behavior: smooth;
   }
 
@@ -17,18 +17,18 @@
   }
 
   body {
-    @apply bg-brand-black text-brand-white font-sans antialiased;
+    @apply bg-brand-white text-brand-slate font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5 {
-    @apply font-display font-extrabold tracking-tight;
+    @apply font-display font-extrabold tracking-tight text-brand-navy;
     text-wrap: balance;
   }
 
   /* Visible, high-contrast focus for keyboard users (WCAG 2.4.7) */
   :focus-visible {
-    @apply outline-none ring-2 ring-brand-orange ring-offset-2 ring-offset-brand-black rounded-sm;
+    @apply outline-none ring-2 ring-brand-teal-deep ring-offset-2 ring-offset-white rounded-sm;
   }
 
   /* Honour reduced-motion: kill non-essential animation. */
@@ -53,37 +53,37 @@
 
   /* Primary call to action */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-orange-gradient
-           px-7 py-4 text-base font-bold text-brand-black-pure shadow-orange-glow
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-teal-gradient
+           px-7 py-4 text-base font-bold text-white shadow-teal-glow
            transition-all duration-200 ease-out
-           hover:-translate-y-0.5 hover:shadow-orange-glow-lg
+           hover:-translate-y-0.5 hover:shadow-teal-glow-lg
            focus-visible:-translate-y-0.5
            active:translate-y-0
            min-h-[44px];
   }
 
-  /* Secondary / ghost call to action */
+  /* Secondary / outline call to action */
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15
-           bg-white/5 px-6 py-3.5 text-base font-semibold text-brand-white
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-brand-line
+           bg-white px-6 py-3.5 text-base font-semibold text-brand-navy
            transition-all duration-200 ease-out
-           hover:border-brand-orange hover:bg-white/10
+           hover:border-brand-teal hover:text-brand-teal-deep hover:shadow-soft
            min-h-[44px];
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-brand-orange/30
-           bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase
-           tracking-[0.18em] text-brand-orange;
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-teal/25
+           bg-brand-teal/10 px-4 py-1.5 text-xs font-semibold uppercase
+           tracking-[0.18em] text-brand-teal-deep;
   }
 
   .card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-7 shadow-card
+    @apply rounded-2xl border border-brand-line bg-white p-7 shadow-soft
            transition-all duration-300 ease-out;
   }
 
   .card-hover {
-    @apply hover:-translate-y-1.5 hover:border-brand-orange/40 hover:shadow-orange-glow;
+    @apply hover:-translate-y-1.5 hover:border-brand-teal/40 hover:shadow-card;
   }
 
   .section {
@@ -92,8 +92,8 @@
 }
 
 @layer utilities {
-  .text-gradient-orange {
-    @apply bg-orange-gradient bg-clip-text text-transparent;
+  .text-gradient-teal {
+    @apply bg-teal-gradient bg-clip-text text-transparent;
   }
 
   /* GSAP reveal: hidden until animated in. Reduced-motion users see it
