@@ -108,6 +108,16 @@ export const SERVICE_AREA = [
   'Hunter Valley',
 ];
 
+// Granular suburb list for the "Areas we service" section (local SEO — feeds
+// long-tail relevance for Local / Near-Me ad groups). Trim to confirmed coverage.
+export const SUBURBS = [
+  'Newcastle', 'Hamilton', 'Mayfield', 'Wallsend', 'Charlestown', 'Kotara',
+  'New Lambton', 'Adamstown', 'Merewether', 'Waratah', 'Cardiff', 'Belmont',
+  'Warners Bay', 'Toronto', 'Morisset', 'Maitland', 'East Maitland', 'Rutherford',
+  'Thornton', 'Cessnock', 'Kurri Kurri', 'Raymond Terrace', 'Medowie',
+  'Nelson Bay', 'Singleton', 'Hunter Valley',
+];
+
 /* --- Legal --------------------------------------------------------------- */
 // [[ ABN / LICENCE ]]
 export const LEGAL = {
@@ -132,3 +142,89 @@ export const SEO = {
   keywords:
     'access ramps Newcastle, wheelchair ramps Newcastle, ramp installer Newcastle, NDIS ramps Newcastle, aged care ramps Hunter, recycled rubber ramps, threshold ramps, mobility ramps Lake Macquarie',
 };
+
+/* --- FAQs (on-page SEO + objection handling => Quality Score + CVR) ------
+ * Native <details> accordions render this content crawlable & accessible, and
+ * each FAQ block also emits FAQPage structured data. Keep answers honest and
+ * specific — they answer the cost/timing/funding questions that stop form
+ * fills. No prices are invented; pricing routes to the free on-site quote.
+ * ----------------------------------------------------------------------- */
+export const FAQ_HOME = [
+  {
+    q: 'How much does an access ramp cost?',
+    a: 'Every ramp is custom-built to your steps and space, so the price depends on the size and type. We give you a firm, itemised price at your free on-site measure — with no obligation to go ahead.',
+  },
+  {
+    q: 'How quickly can you install a ramp?',
+    a: 'Most ramps are installed within days, not weeks. Once you accept your quote we book in fast — because when access is a problem, waiting isn’t an option.',
+  },
+  {
+    q: 'What areas do you service?',
+    a: 'We cover Newcastle, Lake Macquarie, Maitland, Cessnock, Port Stephens and right across the Hunter — including Charlestown, Warners Bay, Belmont, Wallsend, Mayfield, East Maitland, Raymond Terrace and more.',
+  },
+  {
+    q: 'Why recycled rubber?',
+    a: 'Recycled-rubber ramps are non-slip in the wet and dry, hard-wearing and eco-friendly. They give confident footing for wheelchairs, walkers and feet — and they last.',
+  },
+  {
+    q: 'Are your ramps safe and built properly?',
+    a: 'Yes. Every ramp is measured and installed by a qualified tradesman to safe, comfortable gradients, and we’re fully insured. We stand behind our workmanship.',
+  },
+];
+
+export const FAQ_NDIS = [
+  {
+    q: 'Can I use my NDIS funding for a ramp?',
+    a: 'Access ramps are commonly funded as a home modification under the NDIS. We provide a clear, itemised quote you can submit, and we’re happy to talk through your situation.',
+  },
+  {
+    q: 'Do you work with my OT and support coordinator?',
+    a: 'Yes — we’re happy to liaise directly with your occupational therapist and support coordinator so the right ramp gets specified, quoted and installed.',
+  },
+  {
+    q: 'I’m self-managed, plan-managed or NDIA-managed — can you help?',
+    a: 'Whichever way your plan is managed, we can help. We supply itemised quotes and invoices for your records so the funded works are straightforward.',
+  },
+  {
+    q: 'How long does an NDIS ramp take?',
+    a: 'Once the ramp is approved and you accept the quote, most installs are completed within days. We’ll keep you and your coordinator updated.',
+  },
+];
+
+export const FAQ_AGED = [
+  {
+    q: 'Will a ramp help prevent falls?',
+    a: 'Steps and raised thresholds are where many falls happen. A non-slip, gentle-gradient ramp removes that hazard, making it safer to get in and out of the home every day.',
+  },
+  {
+    q: 'Can I use aged-care or NDIS funding?',
+    a: 'Many of our customers use NDIS or aged-care funding for access ramps. We’re happy to provide an itemised quote you can submit — just ask us about your situation.',
+  },
+  {
+    q: 'How quickly can you install a ramp for an elderly parent?',
+    a: 'Most ramps are installed within days. We come to you, measure on-site for free, and book the install in quickly so your loved one is safe sooner.',
+  },
+  {
+    q: 'Will the ramp suit a walker or wheelchair?',
+    a: 'Yes — every ramp is custom-built to a comfortable, compliant gradient to suit walkers, wheelchairs and mobility scooters.',
+  },
+];
+
+export const FAQ_RUBBER = [
+  {
+    q: 'What types of ramps do you make?',
+    a: 'Threshold, step, wedge, kerb and full wheelchair ramps — all custom-built from recycled rubber to fit your exact rise and run.',
+  },
+  {
+    q: 'Are rubber ramps slippery when wet?',
+    a: 'No — recycled-rubber surfaces are designed to be non-slip in the wet and dry, giving confident grip for wheels and feet year-round.',
+  },
+  {
+    q: 'Can you custom-fit a ramp to my steps?',
+    a: 'Absolutely. We measure your steps and doorways on-site for free and build the ramp to fit precisely — no awkward gaps or trip hazards.',
+  },
+  {
+    q: 'How durable are recycled-rubber ramps?',
+    a: 'Very. Recycled rubber is tough and weather-resistant, standing up to daily use and heavy mobility equipment for years.',
+  },
+];

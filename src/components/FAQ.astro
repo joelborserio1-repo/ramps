@@ -1,0 +1,64 @@
+---
+/**
+ * FAQ accordion — native <details>/<summary> so the content is crawlable,
+ * accessible and works with zero JS. Emits FAQPage structured data for the
+ * questions on the page (on-page SEO + landing-page relevance for Quality
+ * Score; answers the objections that stop form fills → higher CVR).
+ */
+interface FAQItem {
+  q: string;
+  a: string;
+}
+interface Props {
+  items: FAQItem[];
+  eyebrow?: string;
+  heading?: string;
+  bg?: 'white' | 'cloud';
+}
+const { items, eyebrow = 'FAQ', heading = 'Your questions, answered', bg = 'cloud' } = Astro.props;
+const bgClass = bg === 'cloud' ? 'bg-brand-cloud' : 'bg-white';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((i) => ({
+    '@type': 'Question',
+    name: i.q,
+    acceptedAnswer: { '@type': 'Answer', text: i.a },
+  })),
+};
+---
+
+<section id="faq" class:list={['section', bgClass]}>
+  <div class="container-page">
+    <div class="mx-auto max-w-3xl">
+      <div class="text-center reveal">
+        <p class="eyebrow">{eyebrow}</p>
+        <h2 class="mt-4 text-3xl sm:text-4xl">{heading}</h2>
+      </div>
+
+      <div class="mt-10 divide-y divide-brand-line overflow-hidden rounded-2xl border border-brand-line bg-white shadow-soft">
+        {
+          items.map((i) => (
+            <details class="group px-6">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-base font-semibold text-brand-navy [&::-webkit-details-marker]:hidden">
+                <span>{i.q}</span>
+                <svg
+                  class="h-5 w-5 shrink-0 text-brand-teal-deep transition-transform duration-200 group-open:rotate-45"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </summary>
+              <p class="-mt-1 pb-5 text-sm leading-relaxed text-brand-slate">{i.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+</section>

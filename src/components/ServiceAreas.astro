@@ -1,0 +1,37 @@
+---
+import { SUBURBS } from '../config';
+
+interface Props {
+  bg?: 'white' | 'cloud';
+}
+const { bg = 'white' } = Astro.props;
+const bgClass = bg === 'cloud' ? 'bg-brand-cloud' : 'bg-white';
+---
+
+<section id="areas" class:list={['section', bgClass]}>
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center reveal">
+      <p class="eyebrow">Local, on the ground</p>
+      <h2 class="mt-4 text-3xl sm:text-4xl">Ramp installers across Newcastle &amp; the Hunter</h2>
+      <p class="mt-4 text-brand-slate">
+        We’re a local, Australian-owned team — we come to you for a free on-site measure and quote.
+        Proudly servicing:
+      </p>
+    </div>
+
+    <ul class="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2.5 reveal">
+      {
+        SUBURBS.map((s) => (
+          <li class="rounded-full border border-brand-line bg-white px-4 py-2 text-sm font-medium text-brand-navy">
+            {s}
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-8 text-center text-sm text-brand-slate">
+      Don’t see your suburb? We likely still cover it —
+      <a href="#quote" class="font-semibold text-brand-teal-deep underline-offset-2 hover:underline">ask for a free quote</a>.
+    </p>
+  </div>
+</section>

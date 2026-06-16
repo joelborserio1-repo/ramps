@@ -123,6 +123,32 @@ Per the Google Ads launch plan:
 
 ---
 
+## SEO & Quality Score (lowering CPC / CPL)
+
+The pages are built to lift Google Ads **Quality Score** (→ lower CPC) and
+**conversion rate** (→ lower CPL):
+
+- **Message match:** one dedicated page per ad group (see table above) so the
+  ad keyword, headline and landing-page H1/copy line up — the biggest lever on
+  *Landing Page Experience* and *Ad Relevance*.
+- **On-page FAQs** (`src/components/FAQ.astro`, content in `config.ts` →
+  `FAQ_*`): native `<details>` accordions (crawlable, accessible, zero-JS) that
+  answer the cost / timing / funding objections that stop form fills, and add
+  keyword-rich, relevant content. Each emits `FAQPage` structured data.
+- **Local relevance:** `ServiceAreas` section lists real Hunter suburbs
+  (`SUBURBS`) for Local / Near-Me intent; `geo.*` meta + `LocalBusiness`
+  `areaServed`.
+- **Structured data:** `LocalBusiness` (with `makesOffer`, conditional
+  `aggregateRating`) + `FAQPage` per page; Open Graph/Twitter with image alt.
+- **Page speed = LPE:** `preconnect`/`dns-prefetch` to the GoHighLevel form
+  domains, self-hosted fonts, minimal JS, compressed/inlined CSS, transform/
+  opacity-only animation.
+- **Hygiene:** canonical per page, `sitemap.xml`, `robots.txt`, branded
+  no-indexed `404`, `max-image-preview:large` snippet directives.
+
+To edit FAQ copy or suburbs, change `src/config.ts` (`FAQ_HOME`, `FAQ_NDIS`,
+`FAQ_AGED`, `FAQ_RUBBER`, `SUBURBS`) — no component edits needed.
+
 ## Accessibility & performance
 
 - WCAG 2.1 AA target: semantic landmarks, labelled form fields, visible focus

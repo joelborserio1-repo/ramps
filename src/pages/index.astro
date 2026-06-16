@@ -9,10 +9,13 @@ import WhyChoose from '../components/WhyChoose.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import Stats from '../components/Stats.astro';
 import Reviews from '../components/Reviews.astro';
+import ServiceAreas from '../components/ServiceAreas.astro';
+import FAQ from '../components/FAQ.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import Footer from '../components/Footer.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
 import ClientBoot from '../components/ClientBoot.astro';
+import { FAQ_HOME } from '../config';
 ---
 
 <Layout>
@@ -26,6 +29,8 @@ import ClientBoot from '../components/ClientBoot.astro';
     <HowItWorks />
     <Stats />
     <Reviews />
+    <ServiceAreas bg="cloud" />
+    <FAQ items={FAQ_HOME} bg="white" />
     <FinalCTA />
   </main>
   <Footer />

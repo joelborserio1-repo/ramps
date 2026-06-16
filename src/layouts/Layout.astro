@@ -1,17 +1,21 @@
 ---
 import '../styles/global.css';
-import { SITE, SEO, CONTACT, STATS, SERVICE_AREA, GTM_CONTAINER_ID, META_PIXEL_ID } from '../config';
+import { SITE, SEO, CONTACT, STATS, SERVICE_AREA, GTM_CONTAINER_ID, META_PIXEL_ID, CRM_IFRAME_EMBED } from '../config';
+
+const usesGhlEmbed = CRM_IFRAME_EMBED.includes('leadconnectorhq.com');
 
 // Per-page SEO overrides (each landing page passes message-matched values).
 interface Props {
   title?: string;
   description?: string;
   keywords?: string;
+  noindex?: boolean;
 }
 const {
   title = SEO.title,
   description = SEO.description,
   keywords = SEO.keywords,
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
@@ -67,11 +71,23 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
 
+    {/* Speed up the GoHighLevel form iframe (page speed = landing-page experience). */}
+    {usesGhlEmbed && (
+      <>
+        <link rel="preconnect" href="https://api.leadconnectorhq.com" crossorigin />
+        <link rel="preconnect" href="https://link.msgsndr.com" crossorigin />
+        <link rel="dns-prefetch" href="https://api.leadconnectorhq.com" />
+        <link rel="dns-prefetch" href="https://link.msgsndr.com" />
+      </>
+    )}
+
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="theme-color" content="#0EA5A0" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <meta name="geo.region" content="AU-NSW" />
+    <meta name="geo.placename" content="Newcastle, Hunter Region" />
 
     {/* If JS is unavailable, never leave reveal-animated content hidden. */}
     <noscript>
@@ -87,6 +103,7 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Ramp Ability — recycled-rubber access ramps, Newcastle & the Hunter" />
     <meta property="og:locale" content="en_AU" />
 
     <!-- Twitter -->
