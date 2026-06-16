@@ -102,6 +102,9 @@ export function initAnimations() {
     const fmt = (n: number) =>
       n.toLocaleString('en-AU', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
     const obj = { val: 0 };
+    // Reset to 0 at setup so the count-up runs clean (no reverse-flash from the
+    // server-rendered final value, which remains the no-JS fallback).
+    el.textContent = fmt(0);
     ScrollTrigger.create({
       trigger: el,
       start: 'top 85%',

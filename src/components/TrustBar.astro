@@ -1,11 +1,16 @@
 ---
 import { STATS } from '../config';
 
+// Only show a review count once it's a real number; otherwise a neutral sub.
+const reviewsSub = Number.isFinite(Number(STATS.googleReviewCount))
+  ? `${STATS.googleReviewCount} reviews`
+  : 'Rated by locals';
+
 const items = [
-  { label: `Google rating`, value: `★ ${STATS.googleRating}`, sub: `${STATS.googleReviewCount} reviews` },
+  { label: `Google rating`, value: `★ ${STATS.googleRating}`, sub: reviewsSub },
   { label: `Ramps installed`, value: `${STATS.rampsInstalled}+`, sub: 'across the Hunter' },
-  { label: 'Licensed & insured', value: 'Fully', sub: 'covered' },
-  { label: 'Local Hunter team', value: '100%', sub: 'local' },
+  { label: 'Fully insured', value: 'Local', sub: 'qualified tradie' },
+  { label: 'Local team', value: '100%', sub: 'Australian-owned' },
 ];
 ---
 

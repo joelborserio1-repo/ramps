@@ -75,17 +75,17 @@ export const STATS = {
   googleRating: '5.0', // client-confirmed
   googleReviewCount: '[[ NN ]]', // e.g. '48'
   rampsInstalled: '10,000', // client-confirmed (shown as "10,000+")
-  yearsInHunter: '[[ NN ]]', // e.g. '12'
+  yearsInHunter: '9', // client-confirmed
   percentCompliant: '[[ 100 ]]', // e.g. '100'
 };
 
-// Animated count-up stats shown in the Stats section.
-// `value` is numeric for the counter; `suffix`/`label` describe it.
+// Animated count-up stats shown in the Stats section. `value` must be a bare
+// number (no commas/symbols) — the count-up formats it. Add a 4th entry only
+// once you have a real figure to back it.
 export const COUNTERS = [
   { value: '10000', suffix: '+', label: 'Ramps installed across Newcastle & the Hunter' },
-  { value: '[[ NN ]]', suffix: '', label: 'Years serving the local community' },
+  { value: '9', suffix: '', label: 'Years serving the local community' },
   { value: '5.0', suffix: '★', label: 'Average Google rating' },
-  { value: '[[ NN ]]', suffix: '%', label: 'Recycled-rubber, non-slip ramps' },
 ];
 
 /* --- Ramp types (used on the homepage & rubber-ramps page) --------------- */
