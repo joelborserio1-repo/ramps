@@ -5,8 +5,8 @@ Add a branded social-share image here named `og-image.png`, sized 1200 x 630.
 
 Suggested content (match the site's friendly light theme):
   - White / soft-cloud background, Ramp Ability logo, the teal ramp motif
-  - Headline: "Safe, friendly access ramps across the Hunter"
-  - Phone number / "Free on-site quote"
+  - Headline: "Recycled-rubber access ramps across Newcastle & the Hunter"
+  - Phone 0480 687 819 / "Free on-site quote"
 
 Until this file exists, Open Graph/Twitter previews will 404 the image.
 The path is referenced in src/config.ts (SEO.ogImage).

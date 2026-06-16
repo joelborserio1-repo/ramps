@@ -2,10 +2,10 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// Update `site` to your production domain so canonical URLs and Open Graph
-// URLs all resolve correctly on hunterramps.au.
+// `site` is the production domain that all ads land on. hunterramps.au
+// redirects here (see public/_redirects).
 export default defineConfig({
-  site: 'https://hunterramps.au',
+  site: 'https://newcastleramps.au',
   integrations: [
     tailwind({ applyBaseStyles: false }),
   ],

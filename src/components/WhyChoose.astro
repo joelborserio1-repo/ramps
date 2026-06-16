@@ -1,48 +1,55 @@
 ---
 const reasons = [
   {
-    title: 'Fast turnaround',
-    copy: 'We move quickly — because when access is a problem, waiting isn\'t an option.',
+    title: 'Installed in days, not weeks',
+    copy: 'When access is a problem, waiting isn\'t an option. Most ramps are installed in days.',
     icon: 'bolt',
   },
   {
-    title: 'Compliant & safe gradients',
-    copy: 'Ramps built to the right gradients and access standards, so they\'re safe to use every day.',
+    title: 'Recycled-rubber & non-slip',
+    copy: 'Eco-friendly recycled-rubber ramps — non-slip, durable and built to last in any weather.',
+    icon: 'leaf',
+  },
+  {
+    title: 'Qualified tradie install',
+    copy: 'Measured and installed by a qualified tradesman. Custom-built to fit your home, done properly.',
     icon: 'shield',
   },
   {
-    title: 'Local Hunter team',
-    copy: 'Real people from the Hunter who come to you — not a faceless national call centre.',
+    title: 'Local & Australian-owned',
+    copy: 'A local Newcastle & Hunter team who come to you — not a faceless national call centre.',
     icon: 'pin',
   },
   {
-    title: 'Tidy, professional install',
-    copy: 'Clean, careful workmanship and a tidy site when we leave. Done properly.',
-    icon: 'sparkle',
-  },
-  {
-    title: 'Workmanship guarantee',
-    copy: 'We stand behind every ramp we build, with a guarantee on our workmanship.',
+    title: 'Fully insured & trusted',
+    copy: 'Fully insured installers you can trust, with a guarantee on our workmanship.',
     icon: 'check',
   },
   {
-    title: 'Funding-friendly',
-    copy: 'NDIS and aged-care friendly — we\'ll help make the process simple. [[ verify ]]',
+    title: 'NDIS & aged-care friendly',
+    copy: 'Happy to liaise with your OT or support coordinator and make funded works simple. [[ verify ]]',
     icon: 'heart',
   },
 ];
 
 const icons: Record<string, string> = {
   bolt: 'M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z',
+  leaf: 'M5 21c0-7 5-13 14-14 0 9-5 14-12 14-1 0-2 0-2 0zm2-2c4-4 7-7 8-10',
   shield: 'M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z',
   pin: 'M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
   sparkle: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z',
   check: 'M20 6L9 17l-5-5',
   heart: 'M12 21s-7-4.5-9.5-9C1 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23 8.5 21.5 12 19 16.5 12 21 12 21z',
 };
+
+interface Props {
+  bg?: 'white' | 'cloud';
+}
+const { bg = 'cloud' } = Astro.props;
+const bgClass = bg === 'cloud' ? 'bg-brand-cloud' : 'bg-white';
 ---
 
-<section id="why" class="section bg-brand-cloud">
+<section id="why" class:list={['section', bgClass]}>
   <div class="container-page">
     <div class="mx-auto max-w-2xl text-center reveal">
       <p class="eyebrow">Why Ramp Ability</p>

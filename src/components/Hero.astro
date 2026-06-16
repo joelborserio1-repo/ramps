@@ -3,12 +3,27 @@ import { CONTACT } from '../config';
 import LeadForm from './LeadForm.astro';
 import RampMotif from './RampMotif.astro';
 
-const ticks = [
-  'Free on-site measure & quote',
-  'Fast installation',
-  'Fully insured',
-  'NDIS & aged-care friendly',
-];
+/**
+ * Hero is props-driven so each ad-group landing page can be message-matched.
+ * Defaults render the homepage (Local / Near-Me) variant. Override the
+ * headline via the `headline` named slot to keep the gradient highlight.
+ */
+interface Props {
+  eyebrow?: string;
+  subhead?: string;
+  ticks?: string[];
+}
+const {
+  eyebrow = "Newcastle & the Hunter's ramp specialists",
+  subhead =
+    'Custom recycled-rubber access ramps, measured and installed by a qualified tradie. Free on-site measure and quote from a local, fully-insured team — most ramps installed in days, not weeks.',
+  ticks = [
+    'Free on-site measure & quote',
+    'Installed in days',
+    'Qualified, fully-insured tradie',
+    'NDIS & aged-care friendly',
+  ],
+} = Astro.props;
 ---
 
 <section id="top" class="relative overflow-hidden bg-white pt-28 pb-16 sm:pt-32 sm:pb-24">
@@ -28,17 +43,16 @@ const ticks = [
   <div class="container-page relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
     <!-- LEFT: copy -->
     <div data-hero-stagger>
-      <p class="eyebrow">Hunter Region's ramp specialists</p>
+      <p class="eyebrow">{eyebrow}</p>
 
       <h1 class="mt-5 text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
-        Safe, friendly access ramps —
-        <span class="text-gradient-teal">installed fast</span> across the Hunter.
+        <slot name="headline">
+          Recycled-rubber access ramps —
+          <span class="text-gradient-teal">installed fast</span> across Newcastle.
+        </slot>
       </h1>
 
-      <p class="mt-5 max-w-xl text-lg text-brand-slate">
-        Custom residential, commercial and aged-care ramps. Free on-site measure and quote
-        from a local, fully-insured Hunter team — so you can stay safe and independent at home.
-      </p>
+      <p class="mt-5 max-w-xl text-lg text-brand-slate">{subhead}</p>
 
       <ul class="mt-7 grid max-w-xl gap-3 sm:grid-cols-2">
         {

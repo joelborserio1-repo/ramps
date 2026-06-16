@@ -1,8 +1,12 @@
 # Netlify / Cloudflare Pages redirects.
-# Force the apex (or www, pick one) so canonical URLs stay consistent on
-# hunterramps.au. Uncomment the line that matches your chosen canonical host.
+# newcastleramps.au is the canonical domain (all Google Ads land here).
+# Point hunterramps.au (apex + www) at it with permanent redirects so any
+# legacy links and the secondary domain consolidate to one canonical host.
 
-# Redirect www -> apex:
-# https://www.hunterramps.au/*  https://hunterramps.au/:splat  301!
+https://hunterramps.au/*      https://newcastleramps.au/:splat   301!
+https://www.hunterramps.au/*  https://newcastleramps.au/:splat   301!
 
-# SPA-style fallback is NOT needed — this is a static multi-asset build.
+# Optional: force apex over www on the primary domain too.
+# https://www.newcastleramps.au/*  https://newcastleramps.au/:splat  301!
+
+# Static multi-asset site — no SPA fallback needed.

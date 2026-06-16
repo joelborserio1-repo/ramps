@@ -48,8 +48,18 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
+    <nav
+      class="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-line pt-6 text-sm font-medium text-brand-slate"
+      aria-label="Ramp pages"
+    >
+      <a href="/" class="transition-colors hover:text-brand-teal-deep">Access ramps</a>
+      <a href="/rubber-ramps/" class="transition-colors hover:text-brand-teal-deep">Recycled-rubber ramps</a>
+      <a href="/ndis/" class="transition-colors hover:text-brand-teal-deep">NDIS ramps</a>
+      <a href="/aged-care/" class="transition-colors hover:text-brand-teal-deep">Aged-care ramps</a>
+    </nav>
+
     <div
-      class="mt-12 flex flex-col gap-3 border-t border-brand-line pt-6 text-xs text-brand-slate sm:flex-row sm:items-center sm:justify-between"
+      class="mt-8 flex flex-col gap-3 border-t border-brand-line pt-6 text-xs text-brand-slate sm:flex-row sm:items-center sm:justify-between"
     >
       <p>
         © {year} {SITE.name}. All rights reserved.

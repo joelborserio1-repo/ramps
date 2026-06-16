@@ -2,6 +2,18 @@
 import '../styles/global.css';
 import { SITE, SEO, CONTACT, STATS, SERVICE_AREA, GTM_CONTAINER_ID, META_PIXEL_ID } from '../config';
 
+// Per-page SEO overrides (each landing page passes message-matched values).
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+const {
+  title = SEO.title,
+  description = SEO.description,
+  keywords = SEO.keywords,
+} = Astro.props;
+
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const ogImage = new URL(SEO.ogImage, SITE.url).href;
 
@@ -11,7 +23,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: SITE.name,
-  description: SEO.description,
+  description: description,
   url: SITE.url,
   telephone: CONTACT.phone.tel,
   email: CONTACT.email,
@@ -28,7 +40,13 @@ const jsonLd = {
     ratingValue: STATS.googleRating,
     reviewCount: STATS.googleReviewCount,
   },
-  makesOffer: ['Residential ramps', 'Commercial ramps', 'Aged-care ramps'].map((name) => ({
+  makesOffer: [
+    'Residential access ramps',
+    'Aged-care access ramps',
+    'Commercial access ramps',
+    'NDIS access ramps',
+    'Recycled-rubber threshold, step, wedge & kerb ramps',
+  ].map((name) => ({
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name },
   })),
@@ -43,9 +61,9 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
 
-    <title>{SEO.title}</title>
-    <meta name="description" content={SEO.description} />
-    <meta name="keywords" content={SEO.keywords} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="theme-color" content="#0EA5A0" />
     <meta name="robots" content="index, follow" />
 
@@ -59,16 +77,16 @@ const jsonLd = {
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:title" content={SEO.title} />
-    <meta property="og:description" content={SEO.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="en_AU" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={SEO.title} />
-    <meta name="twitter:description" content={SEO.description} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

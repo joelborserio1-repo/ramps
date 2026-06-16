@@ -1,11 +1,25 @@
-# Ramp Ability — Lead-Gen Landing Page
+# Ramp Ability — Lead-Gen Landing Pages
 
-A fast, animated, WCAG-AA single landing page for **Ramp Ability**, the Hunter
-Region's access-ramp specialists (residential · commercial · aged care). The
-page has one job: get the visitor to **request a free quote** — via the form or
-a phone call.
+A fast, animated, WCAG-AA set of landing pages for **Ramp Ability**, Newcastle &
+the Hunter's recycled-rubber access-ramp specialists (residential · aged care ·
+commercial · NDIS). Every page has one job: get the visitor to **request a free
+quote** — via the form or a phone call.
 
-Live domain: **[hunterramps.au](https://hunterramps.au)**
+Live domain: **[newcastleramps.au](https://newcastleramps.au)** (all Google Ads
+land here; `hunterramps.au` redirects to it).
+
+### Pages & Google Ads ad-group mapping
+Each page is message-matched to a campaign ad group for Quality Score:
+
+| Page | URL | Ad group(s) |
+|---|---|---|
+| Home (Local / Near-Me) | `/` | AG1 Local Service · AG3 Near Me |
+| NDIS | `/ndis/` | AG2 NDIS |
+| Aged Care / Elderly | `/aged-care/` | AG4 Aged Care |
+| Recycled-Rubber & Types | `/rubber-ramps/` | AG5 Product (Rubber & Threshold) |
+
+All four pages share the **same GHL lead form** (one conversion source of
+truth) and the same click-to-call number, **0480 687 819**.
 
 ---
 
@@ -61,34 +75,51 @@ Anything marked `[[ PLACEHOLDER ]]` must be confirmed by the client before launc
 
 ## Page structure
 
-`src/pages/index.astro` composes these components (`src/components/`):
+Each page (`src/pages/*.astro`) composes shared components (`src/components/`).
+The `Hero` is props-driven so every page is message-matched; `ClientBoot`
+wires up the scripts once per page.
 
-1. `Header` — sticky, transparent over hero, solidifies on scroll, click-to-call + quote button.
-2. `Hero` — benefit-led headline, trust ticks, animated ramp motif + the **lead form**.
-3. `TrustBar` — rating, ramps installed, licensed/insured, local team.
-4. `Services` — Residential · Commercial · Aged Care.
-5. `WhyChoose` — value props.
-6. `HowItWorks` — 3 steps connected by the ramp line.
-7. `Stats` — animated count-up.
-8. `Reviews` — auto-sliding, swipeable, accessible carousel.
-9. `FinalCTA` — teal band, repeated offer.
-10. `Footer` — service area, contact, ABN/licence.
-11. `MobileActionBar` — fixed bottom **Call Now / Free Quote** bar (mobile only).
+- `Header` — sticky, transparent over hero, solidifies on scroll, click-to-call + quote button.
+- `Hero` — message-matched eyebrow / headline (named slot) / subhead / ticks + the **lead form**.
+- `TrustBar` — rating, ramps installed, insured, local team.
+- `Services` — Residential · Aged Care · NDIS, cross-linking to the dedicated pages.
+- `RampTypes` — threshold · step · wedge · kerb · wheelchair (recycled rubber).
+- `WhyChoose` — value props (`bg` prop for alternating section colour).
+- `SplitContent` — reusable narrative + checklist (NDIS / aged-care / rubber pages).
+- `HowItWorks` — 3 steps connected by the ramp line.
+- `Stats` — animated count-up.
+- `Reviews` — auto-sliding, swipeable, accessible carousel.
+- `FinalCTA` — teal band, repeated offer.
+- `Footer` — service area, contact, ABN/licence, internal links.
+- `MobileActionBar` — fixed bottom **Call Now / Free Quote** bar (mobile only).
 
 Client logic: `src/scripts/` — `animations.ts`, `form.ts`, `reviews.ts`, `tracking.ts`.
 
 ---
 
-## Lead form & tracking
+## Lead form & conversion tracking
 
-- Native, on-brand form: name, phone (AU-validated), suburb/postcode, service
-  type, optional message. Honeypot anti-spam, client-side validation, loading
-  & success states, graceful error handling.
-- On submit it POSTs JSON to `CRM_WEBHOOK_URL`. On success it shows an inline
-  success state (no redirect).
-- Conversion events fire on **successful submit** (`generate_lead`) and on
-  **click-to-call** (`click_to_call`) → pushed to the GTM `dataLayer` and Meta
-  Pixel (when IDs are configured). See `src/scripts/tracking.ts`.
+The live form is the **GoHighLevel "Newcastle Ramps" embed** (set in
+`CRM_IFRAME_EMBED`), used on all four pages as the single conversion source of
+truth. A fully-styled native fallback form lives in `LeadForm.astro` for if you
+ever switch off the embed (validation, AU phone check, honeypot, success state).
+
+Per the Google Ads launch plan:
+
+- **gclid / UTMs:** with auto-tagging on, ad clicks land with `?gclid=…` on the
+  URL. GHL's `form_embed.js` forwards the parent page's query params into the
+  iframe, so the form captures gclid/UTMs for attribution automatically — no
+  code change needed.
+- **Call-tap conversion:** every `tel:` tap fires a `click_to_call` event to the
+  GTM `dataLayer` (and Meta Pixel `Contact`). In GTM, turn that into a Google
+  Ads conversion; count calls ≥ 45–60s. Each link carries a `data-call-source`
+  (header / hero / final-cta / footer / mobile-bar) for reporting.
+- **Form-submit conversion:** because the form submits *inside* the GHL iframe,
+  fire the lead conversion from **GHL's** side (its Google Ads / GTM integration
+  or a thank-you event) and import it into Google Ads as a **Primary**
+  conversion. Enable **Enhanced Conversions for Leads** (GHL passes hashed
+  email/phone). The page can't read the cross-origin submit.
+- Set `GTM_CONTAINER_ID` / `META_PIXEL_ID` in `src/config.ts` to inject the tags.
 
 ---
 
@@ -126,29 +157,40 @@ logging in. Validate config any time with `npx wrangler deploy --dry-run`.
 the branch redeploys.
 
 **Custom domain:** *Workers & Pages → your worker → Settings → Domains & Routes*
-→ add **hunterramps.au** (Cloudflare manages DNS automatically if the zone is on
-Cloudflare). Then confirm `site` in `astro.config.mjs` matches.
+→ add **newcastleramps.au** (Cloudflare manages DNS automatically if the zone is
+on Cloudflare). `site` in `astro.config.mjs` is already set to it.
+
+**Redirect hunterramps.au → newcastleramps.au:** Workers static assets do **not**
+read `public/_redirects` (that's a Pages/Netlify file). Because the two domains
+are separate zones, set the redirect on the **hunterramps.au** zone in the
+Cloudflare dashboard: *hunterramps.au → Rules → Redirect Rules → Create* →
+when *Hostname equals `hunterramps.au`*, *Static/Dynamic redirect* to
+`https://newcastleramps.au${http.request.uri.path}`, status **301**, preserve
+query string. (The `_redirects` file still covers the Pages/Netlify path below.)
 
 ### Cloudflare Pages (alternative)
 1. Connect the repo. **Build command:** `npm run build`. **Output dir:** `dist`.
-2. Add custom domain **hunterramps.au** in *Pages → Custom domains*. The
-   `public/_redirects` and `public/_headers` files are applied automatically.
+2. Add custom domain **newcastleramps.au** in *Pages → Custom domains*. The
+   `public/_redirects` (incl. the hunterramps.au→newcastleramps.au rule) and
+   `public/_headers` files are applied automatically.
 
 ### Netlify
 1. New site from Git. **Build:** `npm run build`. **Publish:** `dist`.
-2. *Domain settings* → add **hunterramps.au** → point DNS (A/ALIAS or Netlify DNS).
+2. *Domain settings* → add **newcastleramps.au** → point DNS (A/ALIAS or Netlify DNS).
 3. `_redirects` / `_headers` are picked up automatically from `public/`.
 
 ### Vercel
 1. Import the repo (Astro auto-detected). **Output:** `dist`.
-2. *Settings → Domains* → add **hunterramps.au** and follow the DNS steps.
+2. *Settings → Domains* → add **newcastleramps.au** and follow the DNS steps.
 3. Headers/redirects: add a `vercel.json` if you need the `_headers`/`_redirects`
    rules on Vercel (it doesn't read those files natively).
 
 ### Post-deploy checklist
-- [ ] Confirm `site` in `astro.config.mjs` = `https://hunterramps.au`.
-- [ ] Swap in the real logo, OG image, phone, email, ABN/licence.
-- [ ] Set `CRM_WEBHOOK_URL` (or `CRM_IFRAME_EMBED`) and test a real lead.
+- [ ] `site` in `astro.config.mjs` = `https://newcastleramps.au` (already set).
+- [ ] Point **newcastleramps.au** at the deploy; redirect **hunterramps.au** to it.
+- [ ] Swap in the real logo, OG image, email, ABN/licence. (Phone 0480 687 819 is set.)
+- [ ] Confirm the GHL form on every page; test a real lead end-to-end.
 - [ ] Add real Google reviews and confirmed stats/compliance claims.
-- [ ] Set `GTM_CONTAINER_ID` / `META_PIXEL_ID` and verify events fire.
-- [ ] Run Lighthouse; confirm assets resolve from the custom domain.
+- [ ] Set `GTM_CONTAINER_ID` / `META_PIXEL_ID`; verify call-tap + (GHL-side) form conversions.
+- [ ] Point each ad group's final URL at its matched page (see ad-group table).
+- [ ] Run Lighthouse on all four pages.

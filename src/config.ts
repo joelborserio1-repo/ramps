@@ -9,22 +9,24 @@
 
 export const SITE = {
   name: 'Ramp Ability',
-  domain: 'hunterramps.au',
-  url: 'https://hunterramps.au',
-  tagline: 'Residential · Commercial · Aged Care',
-  region: 'Hunter Region, NSW',
+  // Primary domain = the Google Ads final URL. hunterramps.au redirects here
+  // (see public/_redirects).
+  domain: 'newcastleramps.au',
+  url: 'https://newcastleramps.au',
+  tagline: 'Residential · Aged Care · Commercial · NDIS',
+  region: 'Newcastle & the Hunter',
 };
 
 /* --- Contact ------------------------------------------------------------- */
-// [[ PHONE_NUMBER ]] — used for every click-to-call. `tel` is the raw value
-// used in tel: links (no spaces); `display` is what the user sees.
+// Used for every click-to-call. `tel` is the raw value used in tel: links
+// (no spaces); `display` is what the user sees.
 export const CONTACT = {
   phone: {
-    display: '[[ PHONE_NUMBER ]]', // e.g. '02 4000 0000'
-    tel: '[[ PHONE_NUMBER ]]', // e.g. '+61240000000'
+    display: '0480 687 819',
+    tel: '+61480687819',
   },
   // [[ EMAIL ]]
-  email: '[[ EMAIL ]]', // e.g. 'hello@hunterramps.au'
+  email: '[[ EMAIL ]]', // e.g. 'hello@newcastleramps.au'
 };
 
 /* --- CRM / lead destination --------------------------------------------- */
@@ -80,10 +82,19 @@ export const STATS = {
 // Animated count-up stats shown in the Stats section.
 // `value` is numeric for the counter; `suffix`/`label` describe it.
 export const COUNTERS = [
-  { value: '[[ NNN ]]', suffix: '+', label: 'Ramps installed across the Hunter' },
-  { value: '[[ NN ]]', suffix: '', label: 'Years serving the Hunter Region' },
+  { value: '[[ NNN ]]', suffix: '+', label: 'Ramps installed across Newcastle & the Hunter' },
+  { value: '[[ NN ]]', suffix: '', label: 'Years serving the local community' },
   { value: '[[ 4.x ]]', suffix: '★', label: 'Average Google rating' },
-  { value: '[[ 100 ]]', suffix: '%', label: 'Built to access standards' },
+  { value: '[[ NN ]]', suffix: '%', label: 'Recycled-rubber, non-slip ramps' },
+];
+
+/* --- Ramp types (used on the homepage & rubber-ramps page) --------------- */
+export const RAMP_TYPES = [
+  { name: 'Threshold ramps', copy: 'Smooth out doorways and raised thresholds — no more trip hazard at the front door.' },
+  { name: 'Step ramps', copy: 'Safe access over one or more steps, custom-built to your exact rise and run.' },
+  { name: 'Wedge ramps', copy: 'Neat wedge profiles for low steps and level changes inside and out.' },
+  { name: 'Kerb ramps', copy: 'Bridge kerbs and edges for wheelchairs, walkers and mobility scooters.' },
+  { name: 'Wheelchair ramps', copy: 'Longer, compliant-gradient ramps for confident, independent wheelchair access.' },
 ];
 
 /* --- Service area -------------------------------------------------------- */
@@ -112,12 +123,12 @@ export const COMPLIANCE_CLAIMS = [
   'Fully insured', // [[ verify ]]
 ];
 
-/* --- SEO ----------------------------------------------------------------- */
+/* --- SEO (homepage defaults; per-page overrides set in each page) -------- */
 export const SEO = {
-  title: 'Access Ramps Hunter Region | Ramp Ability — Newcastle & Lake Macquarie',
+  title: 'Access Ramps Newcastle & the Hunter | Ramp Ability',
   description:
-    'Safe, compliant access ramps installed fast across the Hunter Region. Free on-site measure & quote from a local, fully-insured team. Residential, commercial & aged-care ramps. NDIS & aged-care friendly.',
+    'Custom recycled-rubber access ramps, measured & installed by a qualified tradie across Newcastle & the Hunter. Free on-site measure & quote from a local, fully-insured team. NDIS & aged-care friendly.',
   ogImage: '/og-image.png', // [[ replace with a branded 1200x630 OG image ]]
   keywords:
-    'access ramps Hunter, disability ramps Newcastle, wheelchair ramps Lake Macquarie, aged care ramps, NDIS ramps Hunter, mobility ramps Maitland',
+    'access ramps Newcastle, wheelchair ramps Newcastle, ramp installer Newcastle, NDIS ramps Newcastle, aged care ramps Hunter, recycled rubber ramps, threshold ramps, mobility ramps Lake Macquarie',
 };

@@ -94,7 +94,7 @@ export function initLeadForm() {
 
     const data = Object.fromEntries(new FormData(form).entries());
     delete data.company_website;
-    data.source = 'hunterramps.au';
+    data.source = 'newcastleramps.au';
     data.submitted_at = new Date().toISOString();
 
     setLoading(true);

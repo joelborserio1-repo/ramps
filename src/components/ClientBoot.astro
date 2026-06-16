@@ -1,0 +1,22 @@
+---
+// Shared client bootstrap — include once per page (after the content).
+---
+<script>
+  import { initAnimations } from '../scripts/animations';
+  import { initLeadForm } from '../scripts/form';
+  import { initReviewsCarousel } from '../scripts/reviews';
+  import { initCallTracking } from '../scripts/tracking';
+
+  const boot = () => {
+    initAnimations();
+    initLeadForm();
+    initReviewsCarousel();
+    initCallTracking();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+</script>

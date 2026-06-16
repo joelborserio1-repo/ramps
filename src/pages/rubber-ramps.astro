@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import RampTypes from '../components/RampTypes.astro';
+import SplitContent from '../components/SplitContent.astro';
+import WhyChoose from '../components/WhyChoose.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Stats from '../components/Stats.astro';
+import Reviews from '../components/Reviews.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+import ClientBoot from '../components/ClientBoot.astro';
+
+const rubberPoints = [
+  {
+    title: 'Non-slip in all weather',
+    copy: 'Recycled-rubber surfaces grip in the wet and dry — confident footing for wheels, walkers and feet.',
+  },
+  {
+    title: 'Tough & long-lasting',
+    copy: 'Hard-wearing rubber stands up to daily use, weather and heavy mobility equipment for years.',
+  },
+  {
+    title: 'Eco-friendly',
+    copy: 'Made from recycled rubber — a durable, sustainable choice that keeps material out of landfill.',
+  },
+  {
+    title: 'Custom-built to fit',
+    copy: 'Measured to your exact rise and run by a qualified tradie, so the ramp fits your home perfectly.',
+  },
+];
+---
+
+<Layout
+  title="Recycled-Rubber Access Ramps Newcastle | Threshold & Step Ramps"
+  description="Custom recycled-rubber access ramps across Newcastle & the Hunter — threshold, step, wedge, kerb and wheelchair ramps. Non-slip, durable and eco-friendly, installed by a qualified tradie. Free on-site quote."
+  keywords="recycled rubber ramp, rubber ramp Newcastle, threshold ramp, step ramp, wedge ramp, kerb ramp, wheelchair ramp for home, custom rubber access ramp"
+>
+  <Header />
+  <main>
+    <Hero
+      eyebrow="Recycled-rubber ramp specialists"
+      subhead="Eco-friendly, non-slip recycled-rubber access ramps — threshold, step, wedge, kerb and wheelchair. Custom-built to fit and installed by a qualified tradie across Newcastle & the Hunter."
+      ticks={[
+        'Made from recycled rubber',
+        'Non-slip & durable',
+        'Custom-built to fit',
+        'Installed in days',
+      ]}
+    >
+      <Fragment slot="headline">
+        Recycled-rubber access ramps, <span class="text-gradient-teal">custom-built to fit</span>.
+      </Fragment>
+    </Hero>
+    <TrustBar />
+    <RampTypes bg="cloud" />
+    <SplitContent
+      eyebrow="Why recycled rubber"
+      heading="A safer, tougher, greener ramp"
+      intro="Recycled rubber is the ideal ramp material — grippy underfoot, hard-wearing and kind to the planet — and every ramp is built to fit your home."
+      points={rubberPoints}
+      bg="white"
+      cta="Get my free quote"
+    />
+    <WhyChoose bg="cloud" />
+    <HowItWorks />
+    <Stats />
+    <Reviews />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <MobileActionBar />
+  <ClientBoot />
+</Layout>

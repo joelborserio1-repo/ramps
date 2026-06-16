@@ -1,0 +1,49 @@
+---
+/**
+ * Reusable narrative + checklist section for the message-matched landing
+ * pages (NDIS process, aged-care safety, etc.).
+ */
+interface Point {
+  title: string;
+  copy: string;
+}
+interface Props {
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  points: Point[];
+  bg?: 'white' | 'cloud';
+  cta?: string; // CTA label; links to #quote. Omit to hide.
+}
+const { eyebrow, heading, intro, points, bg = 'white', cta = 'Get my free quote' } = Astro.props;
+const bgClass = bg === 'cloud' ? 'bg-brand-cloud' : 'bg-white';
+---
+
+<section class:list={['section', bgClass]}>
+  <div class="container-page grid items-start gap-12 lg:grid-cols-2">
+    <div class="reveal lg:sticky lg:top-28">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 class="mt-4 text-3xl sm:text-4xl">{heading}</h2>
+      <p class="mt-4 text-lg text-brand-slate">{intro}</p>
+      {cta && <a href="#quote" class="btn-primary mt-7 text-base">{cta}</a>}
+    </div>
+
+    <ul class="grid gap-4" data-stagger>
+      {
+        points.map((p) => (
+          <li class="card flex items-start gap-4">
+            <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal-gradient">
+              <svg class="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="text-base font-bold">{p.title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-brand-slate">{p.copy}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

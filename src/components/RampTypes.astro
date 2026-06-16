@@ -1,0 +1,56 @@
+---
+import { RAMP_TYPES } from '../config';
+import RampMotif from './RampMotif.astro';
+
+interface Props {
+  bg?: 'white' | 'cloud';
+  eyebrow?: string;
+  heading?: string;
+  sub?: string;
+}
+const {
+  bg = 'white',
+  eyebrow = 'Ramp types',
+  heading = 'A ramp for every step, kerb & threshold',
+  sub = 'Custom-built from recycled rubber — non-slip, durable and made to fit your exact rise and run.',
+} = Astro.props;
+const bgClass = bg === 'cloud' ? 'bg-brand-cloud' : 'bg-white';
+---
+
+<section id="ramp-types" class:list={['section', bgClass]}>
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center reveal">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 class="mt-4 text-3xl sm:text-4xl">{heading}</h2>
+      <p class="mt-4 text-brand-slate">{sub}</p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+      {
+        RAMP_TYPES.map((t) => (
+          <article class="card card-hover flex items-start gap-4">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal-deep">
+              <RampMotif class="h-6 w-6" />
+            </span>
+            <div>
+              <h3 class="text-base font-bold">{t.name}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-brand-slate">{t.copy}</p>
+            </div>
+          </article>
+        ))
+      }
+      <article class="card flex flex-col justify-center bg-teal-gradient text-white">
+        <h3 class="text-lg font-bold text-white">Not sure which you need?</h3>
+        <p class="mt-1.5 text-sm leading-relaxed text-white/85">
+          We measure on-site for free and recommend the right ramp for your home — no obligation.
+        </p>
+        <a
+          href="#quote"
+          class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-bold text-brand-teal-deep transition-transform hover:-translate-y-0.5"
+        >
+          Get my free quote
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

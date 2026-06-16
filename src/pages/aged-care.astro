@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import SplitContent from '../components/SplitContent.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Stats from '../components/Stats.astro';
+import Reviews from '../components/Reviews.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+import ClientBoot from '../components/ClientBoot.astro';
+
+const carePoints = [
+  {
+    title: 'Reduce the risk of falls',
+    copy: 'Non-slip recycled-rubber ramps replace risky steps and thresholds — the places falls most often happen.',
+  },
+  {
+    title: 'Stay independent at home',
+    copy: 'Safe, easy access means a loved one can keep getting in and out of their own home with confidence.',
+  },
+  {
+    title: 'Dignified, comfortable access',
+    copy: 'Gentle, compliant gradients custom-built to suit walkers, wheelchairs and mobility scooters.',
+  },
+  {
+    title: 'Funding-friendly',
+    copy: 'NDIS and aged-care friendly — we can help make funded works simple and quote for your records. [[ verify ]]',
+  },
+];
+---
+
+<Layout
+  title="Aged Care & Elderly Access Ramps Newcastle | Ramp Ability"
+  description="Help an elderly loved one stay safe and independent at home. Non-slip recycled-rubber access ramps across Newcastle & the Hunter, reducing the risk of falls. Free on-site measure & quote. NDIS & aged-care friendly."
+  keywords="ramp for elderly Newcastle, aged care ramp Hunter, wheelchair ramp for elderly, home access ramp, falls prevention ramp, elderly mobility ramp"
+>
+  <Header />
+  <main>
+    <Hero
+      eyebrow="Helping Hunter families stay safe at home"
+      subhead="Non-slip recycled-rubber access ramps that reduce the risk of falls and help an elderly loved one stay safe and independent at home. Measured and installed by a local, qualified tradie."
+      ticks={[
+        'Reduce the risk of falls',
+        'Non-slip recycled rubber',
+        'Free on-site measure & quote',
+        'NDIS & aged-care friendly',
+      ]}
+    >
+      <Fragment slot="headline">
+        Help Mum &amp; Dad stay <span class="text-gradient-teal">safe at home</span>.
+      </Fragment>
+    </Hero>
+    <TrustBar />
+    <SplitContent
+      eyebrow="Safe access for loved ones"
+      heading="Keep a loved one safe, independent and at home"
+      intro="A small step can be a big fall risk. A custom-fit, non-slip ramp removes the hazard — so getting in and out of the house stays safe and simple."
+      points={carePoints}
+      bg="white"
+      cta="Get a free quote"
+    />
+    <HowItWorks />
+    <Stats />
+    <Reviews />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <MobileActionBar />
+  <ClientBoot />
+</Layout>
