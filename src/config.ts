@@ -22,8 +22,8 @@ export const SITE = {
 // (no spaces); `display` is what the user sees.
 export const CONTACT = {
   phone: {
-    display: '0480 687 819',
-    tel: '+61480687819',
+    display: '0468 170 347',
+    tel: '+61468170347',
   },
   // [[ EMAIL ]]
   email: '[[ EMAIL ]]', // e.g. 'hello@newcastleramps.au'

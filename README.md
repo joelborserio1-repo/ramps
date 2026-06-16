@@ -19,7 +19,7 @@ Each page is message-matched to a campaign ad group for Quality Score:
 | Recycled-Rubber & Types | `/rubber-ramps/` | AG5 Product (Rubber & Threshold) |
 
 All four pages share the **same GHL lead form** (one conversion source of
-truth) and the same click-to-call number, **0480 687 819**.
+truth) and the same click-to-call number, **0468 170 347**.
 
 ---
 
@@ -190,7 +190,7 @@ query string.
 ### Post-deploy checklist
 - [ ] `site` in `astro.config.mjs` = `https://newcastleramps.au` (already set).
 - [ ] Point **newcastleramps.au** at the deploy; redirect **hunterramps.au** to it.
-- [ ] Swap in the real logo, OG image, email, ABN/licence. (Phone 0480 687 819 is set.)
+- [ ] Swap in the real logo, OG image, email, ABN/licence. (Phone 0468 170 347 is set.)
 - [ ] Confirm the GHL form on every page; test a real lead end-to-end.
 - [ ] Add real Google reviews and confirmed stats/compliance claims.
 - [ ] Set `GTM_CONTAINER_ID` / `META_PIXEL_ID`; verify call-tap + (GHL-side) form conversions.
