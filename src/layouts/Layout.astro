@@ -26,7 +26,7 @@ const jsonLd = {
   description: description,
   url: SITE.url,
   telephone: CONTACT.phone.tel,
-  email: CONTACT.email,
+  ...(CONTACT.email.includes('@') ? { email: CONTACT.email } : {}),
   image: ogImage,
   areaServed: SERVICE_AREA.map((name) => ({ '@type': 'City', name })),
   address: {

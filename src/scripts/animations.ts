@@ -10,6 +10,16 @@ export function initAnimations() {
   if (reduceMotion) {
     // Make sure nothing is left hidden.
     document.querySelectorAll('.reveal').forEach((el) => el.classList.remove('reveal'));
+    // Show final counter values immediately (no count-up animation).
+    document.querySelectorAll<HTMLElement>('[data-counter]').forEach((el) => {
+      const n = parseFloat(el.dataset.counter || '0');
+      if (Number.isNaN(n)) return;
+      const decimals = (el.dataset.counter || '').includes('.') ? 1 : 0;
+      el.textContent = n.toLocaleString('en-AU', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      });
+    });
     return;
   }
 
@@ -83,12 +93,14 @@ export function initAnimations() {
     });
   });
 
-  /* --- Animated count-up stats ------------------------------------------- */
+  /* --- Animated count-up stats (thousands-separated) --------------------- */
   gsap.utils.toArray<HTMLElement>('[data-counter]').forEach((el) => {
     const raw = el.dataset.counter || '0';
     const target = parseFloat(raw);
     if (Number.isNaN(target)) return;
     const decimals = raw.includes('.') ? 1 : 0;
+    const fmt = (n: number) =>
+      n.toLocaleString('en-AU', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
     const obj = { val: 0 };
     ScrollTrigger.create({
       trigger: el,
@@ -100,7 +112,7 @@ export function initAnimations() {
           duration: 1.6,
           ease: 'power2.out',
           onUpdate: () => {
-            el.textContent = obj.val.toFixed(decimals);
+            el.textContent = fmt(obj.val);
           },
         });
       },

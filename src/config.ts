@@ -74,7 +74,7 @@ export const META_PIXEL_ID = '';
 export const STATS = {
   googleRating: '5.0', // client-confirmed
   googleReviewCount: '[[ NN ]]', // e.g. '48'
-  rampsInstalled: '[[ NNN ]]', // e.g. '500'
+  rampsInstalled: '10,000', // client-confirmed (shown as "10,000+")
   yearsInHunter: '[[ NN ]]', // e.g. '12'
   percentCompliant: '[[ 100 ]]', // e.g. '100'
 };
@@ -82,7 +82,7 @@ export const STATS = {
 // Animated count-up stats shown in the Stats section.
 // `value` is numeric for the counter; `suffix`/`label` describe it.
 export const COUNTERS = [
-  { value: '[[ NNN ]]', suffix: '+', label: 'Ramps installed across Newcastle & the Hunter' },
+  { value: '10000', suffix: '+', label: 'Ramps installed across Newcastle & the Hunter' },
   { value: '[[ NN ]]', suffix: '', label: 'Years serving the local community' },
   { value: '5.0', suffix: '★', label: 'Average Google rating' },
   { value: '[[ NN ]]', suffix: '%', label: 'Recycled-rubber, non-slip ramps' },
