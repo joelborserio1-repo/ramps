@@ -40,7 +40,26 @@ export const CRM_WEBHOOK_URL = '[[ CRM_WEBHOOK_URL ]]';
 // embed inside the styled card instead of the native form.
 //
 // [[ CRM_IFRAME_EMBED ]]
-export const CRM_IFRAME_EMBED = '';
+// Active: GoHighLevel / LeadConnector "Newcastle Ramps" form. The companion
+// resize script (link.msgsndr.com/js/form_embed.js) is loaded automatically by
+// the LeadForm component when this embed is set.
+export const CRM_IFRAME_EMBED = `<iframe
+    src="https://api.leadconnectorhq.com/widget/form/C3N8VYiBVPV6JX93I6hJ"
+    style="width:100%;height:794px;border:none;border-radius:8px"
+    id="inline-C3N8VYiBVPV6JX93I6hJ"
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Newcastle Ramps"
+    data-height="794"
+    data-layout-iframe-id="inline-C3N8VYiBVPV6JX93I6hJ"
+    data-form-id="C3N8VYiBVPV6JX93I6hJ"
+    title="Newcastle Ramps">
+</iframe>`;
 
 /* --- Tracking ------------------------------------------------------------ */
 // [[ GTM_CONTAINER_ID ]] — e.g. 'GTM-XXXXXXX'. Leave blank to disable GTM.

@@ -30,8 +30,9 @@ const errClass = 'hidden mt-1.5 text-sm text-orange-300';
     {
       useEmbed ? (
         // CRM iframe embed slot (GoHighLevel / Pipeline Partners). Card styling
-        // wraps the embed so it stays on-brand.
-        <div class="overflow-hidden rounded-xl" set:html={CRM_IFRAME_EMBED} />
+        // wraps the embed so it stays on-brand. min-h prevents the height:100%
+        // iframe collapsing before form_embed.js resizes it.
+        <div class="overflow-hidden rounded-xl min-h-[794px]" set:html={CRM_IFRAME_EMBED} />
       ) : (
         <>
           <form
@@ -122,3 +123,7 @@ const errClass = 'hidden mt-1.5 text-sm text-orange-300';
     }
   </div>
 </div>
+
+{/* GoHighLevel / LeadConnector iframe resize script. Only loaded when the
+    CRM embed is active (scripts injected via set:html do not execute). */}
+{useEmbed && <script is:inline async src="https://link.msgsndr.com/js/form_embed.js" />}
