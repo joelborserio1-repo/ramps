@@ -104,13 +104,35 @@ Client logic: `src/scripts/` — `animations.ts`, `form.ts`, `reviews.ts`, `trac
 
 ## Deployment
 
-Static build → host the `./dist` folder anywhere. The `public/_redirects` and
-`public/_headers` files configure Netlify/Cloudflare Pages.
+Static build → host the `./dist` folder anywhere.
 
-### Cloudflare Pages
+### Cloudflare Workers (recommended — configured in `wrangler.jsonc`)
+
+The project ships a `wrangler.jsonc` that serves `./dist` as Workers static
+assets. Two ways to go live:
+
+**A) One-command CLI deploy**
+```bash
+npx wrangler login          # one-time browser auth, OR set CLOUDFLARE_API_TOKEN
+npm run deploy              # builds ./dist, then `wrangler deploy`
+```
+For CI / non-interactive deploys, set `CLOUDFLARE_API_TOKEN` (a token with the
+*Workers Scripts: Edit* permission) and `CLOUDFLARE_ACCOUNT_ID` instead of
+logging in. Validate config any time with `npx wrangler deploy --dry-run`.
+
+**B) Auto-deploy from GitHub** (Cloudflare dashboard → *Workers & Pages* →
+*Create* → *Import a repository*): pick this repo, **build command**
+`npm run build`, **deploy command** `npx wrangler deploy`, then every push to
+the branch redeploys.
+
+**Custom domain:** *Workers & Pages → your worker → Settings → Domains & Routes*
+→ add **hunterramps.au** (Cloudflare manages DNS automatically if the zone is on
+Cloudflare). Then confirm `site` in `astro.config.mjs` matches.
+
+### Cloudflare Pages (alternative)
 1. Connect the repo. **Build command:** `npm run build`. **Output dir:** `dist`.
-2. Add custom domain **hunterramps.au** in *Pages → Custom domains* (Cloudflare
-   manages DNS automatically if the zone is on Cloudflare).
+2. Add custom domain **hunterramps.au** in *Pages → Custom domains*. The
+   `public/_redirects` and `public/_headers` files are applied automatically.
 
 ### Netlify
 1. New site from Git. **Build:** `npm run build`. **Publish:** `dist`.
