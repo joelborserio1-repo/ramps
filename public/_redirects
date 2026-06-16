@@ -1,12 +1,9 @@
-# Netlify / Cloudflare Pages redirects.
-# newcastleramps.au is the canonical domain (all Google Ads land here).
-# Point hunterramps.au (apex + www) at it with permanent redirects so any
-# legacy links and the secondary domain consolidate to one canonical host.
-
-https://hunterramps.au/*      https://newcastleramps.au/:splat   301!
-https://www.hunterramps.au/*  https://newcastleramps.au/:splat   301!
-
-# Optional: force apex over www on the primary domain too.
-# https://www.newcastleramps.au/*  https://newcastleramps.au/:splat  301!
-
-# Static multi-asset site — no SPA fallback needed.
+# Cloudflare Workers static-assets redirects.
+#
+# IMPORTANT: Workers Assets only allows RELATIVE (same-origin) targets here.
+# Cross-domain redirects (hunterramps.au -> newcastleramps.au) CANNOT live in
+# this file — they must be a zone-level Redirect Rule on the hunterramps.au
+# zone in the Cloudflare dashboard (see README "Redirect hunterramps.au").
+#
+# Add any same-origin path redirects below, e.g.:
+#   /old-path  /new-path  301

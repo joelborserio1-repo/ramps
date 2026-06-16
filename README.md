@@ -160,13 +160,15 @@ the branch redeploys.
 → add **newcastleramps.au** (Cloudflare manages DNS automatically if the zone is
 on Cloudflare). `site` in `astro.config.mjs` is already set to it.
 
-**Redirect hunterramps.au → newcastleramps.au:** Workers static assets do **not**
-read `public/_redirects` (that's a Pages/Netlify file). Because the two domains
-are separate zones, set the redirect on the **hunterramps.au** zone in the
-Cloudflare dashboard: *hunterramps.au → Rules → Redirect Rules → Create* →
-when *Hostname equals `hunterramps.au`*, *Static/Dynamic redirect* to
+**Redirect hunterramps.au → newcastleramps.au:** Workers static assets read
+`public/_redirects` but only allow **relative (same-origin)** targets — a
+cross-domain absolute URL there fails the deploy (`Only relative URLs are
+allowed`). Because the two domains are separate zones, set the redirect on the
+**hunterramps.au** zone in the Cloudflare dashboard instead:
+*hunterramps.au → Rules → Redirect Rules → Create* → when *Hostname equals
+`hunterramps.au`*, *Static/Dynamic redirect* to
 `https://newcastleramps.au${http.request.uri.path}`, status **301**, preserve
-query string. (The `_redirects` file still covers the Pages/Netlify path below.)
+query string.
 
 ### Cloudflare Pages (alternative)
 1. Connect the repo. **Build command:** `npm run build`. **Output dir:** `dist`.
