@@ -1,0 +1,8 @@
+# Netlify / Cloudflare Pages redirects.
+# Force the apex (or www, pick one) so canonical URLs stay consistent on
+# hunterramps.au. Uncomment the line that matches your chosen canonical host.
+
+# Redirect www -> apex:
+# https://www.hunterramps.au/*  https://hunterramps.au/:splat  301!
+
+# SPA-style fallback is NOT needed — this is a static multi-asset build.

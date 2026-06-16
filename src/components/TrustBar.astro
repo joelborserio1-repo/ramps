@@ -1,0 +1,29 @@
+---
+import { STATS } from '../config';
+
+const items = [
+  { label: `Google rating`, value: `★ ${STATS.googleRating}`, sub: `${STATS.googleReviewCount} reviews` },
+  { label: `Ramps installed`, value: `${STATS.rampsInstalled}+`, sub: 'across the Hunter' },
+  { label: 'Licensed & insured', value: 'Fully', sub: 'covered' },
+  { label: 'Local Hunter team', value: '100%', sub: 'local' },
+];
+---
+
+<section aria-label="Trust and credibility" class="border-y border-white/10 bg-brand-black-pure">
+  <div class="container-page">
+    <ul class="grid grid-cols-2 divide-x divide-white/10 sm:grid-cols-4" data-stagger>
+      {
+        items.map((item) => (
+          <li class="flex flex-col items-center justify-center gap-0.5 px-3 py-5 text-center">
+            <span class="text-lg font-extrabold text-brand-orange sm:text-xl">{item.value}</span>
+            <span class="text-xs font-semibold text-brand-white">{item.label}</span>
+            <span class="text-[11px] text-brand-grey">{item.sub}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="pb-3 text-center text-[11px] text-brand-grey/70">
+      {/* Replace all figures above with client-confirmed numbers — see src/config.ts (STATS). */}
+    </p>
+  </div>
+</section>

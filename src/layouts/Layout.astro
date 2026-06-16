@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import { SITE, SEO, CONTACT, STATS, SERVICE_AREA, GTM_CONTAINER_ID, META_PIXEL_ID } from '../config';
+
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = new URL(SEO.ogImage, SITE.url).href;
+
+// LocalBusiness JSON-LD. Placeholder fields are filled from config — confirm
+// with the client before launch (rating/review count are advertising claims).
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE.name,
+  description: SEO.description,
+  url: SITE.url,
+  telephone: CONTACT.phone.tel,
+  email: CONTACT.email,
+  image: ogImage,
+  areaServed: SERVICE_AREA.map((name) => ({ '@type': 'City', name })),
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'NSW',
+    addressCountry: 'AU',
+  },
+  // Remove aggregateRating until the client confirms real, substantiated figures.
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: STATS.googleRating,
+    reviewCount: STATS.googleReviewCount,
+  },
+  makesOffer: ['Residential ramps', 'Commercial ramps', 'Aged-care ramps'].map((name) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{SEO.title}</title>
+    <meta name="description" content={SEO.description} />
+    <meta name="keywords" content={SEO.keywords} />
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta name="robots" content="index, follow" />
+
+    {/* If JS is unavailable, never leave reveal-animated content hidden. */}
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={SEO.title} />
+    <meta property="og:description" content={SEO.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={SEO.title} />
+    <meta name="twitter:description" content={SEO.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+    {/* Google Tag Manager — only injected when a container ID is configured. */}
+    {GTM_CONTAINER_ID && (
+      <script is:inline define:vars={{ GTM_CONTAINER_ID }}>
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',GTM_CONTAINER_ID);`}
+      </script>
+    )}
+
+    {/* Meta Pixel — only injected when a pixel ID is configured. */}
+    {META_PIXEL_ID && (
+      <script is:inline define:vars={{ META_PIXEL_ID }}>
+        {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',META_PIXEL_ID);fbq('track','PageView');`}
+      </script>
+    )}
+  </head>
+  <body>
+    {GTM_CONTAINER_ID && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+          title="gtm"></iframe>
+      </noscript>
+    )}
+    <slot />
+  </body>
+</html>

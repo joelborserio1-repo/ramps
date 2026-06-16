@@ -1,0 +1,35 @@
+{
+  "_comment": "PLACEHOLDER REVIEWS — DO NOT publish as real. Replace each entry with verbatim Google reviews supplied by the client, or wire to the Google Places / Business Profile reviews API. Never fabricate testimonials.",
+  "reviews": [
+    {
+      "rating": 5,
+      "text": "[[ PLACEHOLDER REVIEW — replace with a real Google review. Keep the customer's own words. ]]",
+      "name": "[[ Reviewer name ]]",
+      "location": "[[ Suburb ]]"
+    },
+    {
+      "rating": 5,
+      "text": "[[ PLACEHOLDER REVIEW — replace with a real Google review. ]]",
+      "name": "[[ Reviewer name ]]",
+      "location": "[[ Suburb ]]"
+    },
+    {
+      "rating": 5,
+      "text": "[[ PLACEHOLDER REVIEW — replace with a real Google review. ]]",
+      "name": "[[ Reviewer name ]]",
+      "location": "[[ Suburb ]]"
+    },
+    {
+      "rating": 5,
+      "text": "[[ PLACEHOLDER REVIEW — replace with a real Google review. ]]",
+      "name": "[[ Reviewer name ]]",
+      "location": "[[ Suburb ]]"
+    },
+    {
+      "rating": 5,
+      "text": "[[ PLACEHOLDER REVIEW — replace with a real Google review. ]]",
+      "name": "[[ Reviewer name ]]",
+      "location": "[[ Suburb ]]"
+    }
+  ]
+}

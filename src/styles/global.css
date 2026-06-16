@@ -1,0 +1,113 @@
+/* Self-hosted variable fonts (performant, no external request) */
+@import '@fontsource-variable/sora';
+@import '@fontsource-variable/inter';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-padding-top: 5rem; /* offset for sticky header on anchor scroll */
+  }
+
+  body {
+    @apply bg-brand-black text-brand-white font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display font-extrabold tracking-tight;
+    text-wrap: balance;
+  }
+
+  /* Visible, high-contrast focus for keyboard users (WCAG 2.4.7) */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-orange ring-offset-2 ring-offset-brand-black rounded-sm;
+  }
+
+  /* Honour reduced-motion: kill non-essential animation. */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  /* Primary call to action */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-orange-gradient
+           px-7 py-4 text-base font-bold text-brand-black-pure shadow-orange-glow
+           transition-all duration-200 ease-out
+           hover:-translate-y-0.5 hover:shadow-orange-glow-lg
+           focus-visible:-translate-y-0.5
+           active:translate-y-0
+           min-h-[44px];
+  }
+
+  /* Secondary / ghost call to action */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15
+           bg-white/5 px-6 py-3.5 text-base font-semibold text-brand-white
+           transition-all duration-200 ease-out
+           hover:border-brand-orange hover:bg-white/10
+           min-h-[44px];
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-orange/30
+           bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase
+           tracking-[0.18em] text-brand-orange;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-7 shadow-card
+           transition-all duration-300 ease-out;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-brand-orange/40 hover:shadow-orange-glow;
+  }
+
+  .section {
+    @apply py-20 sm:py-28;
+  }
+}
+
+@layer utilities {
+  .text-gradient-orange {
+    @apply bg-orange-gradient bg-clip-text text-transparent;
+  }
+
+  /* GSAP reveal: hidden until animated in. Reduced-motion users see it
+     immediately (no transform applied) via the media query below. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}

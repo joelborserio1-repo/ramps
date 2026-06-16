@@ -1,0 +1,73 @@
+---
+const reasons = [
+  {
+    title: 'Fast turnaround',
+    copy: 'We move quickly — because when access is a problem, waiting isn\'t an option.',
+    icon: 'bolt',
+  },
+  {
+    title: 'Compliant & safe gradients',
+    copy: 'Ramps built to the right gradients and access standards, so they\'re safe to use every day.',
+    icon: 'shield',
+  },
+  {
+    title: 'Local Hunter team',
+    copy: 'Real people from the Hunter who come to you — not a faceless national call centre.',
+    icon: 'pin',
+  },
+  {
+    title: 'Tidy, professional install',
+    copy: 'Clean, careful workmanship and a tidy site when we leave. Done properly.',
+    icon: 'sparkle',
+  },
+  {
+    title: 'Workmanship guarantee',
+    copy: 'We stand behind every ramp we build, with a guarantee on our workmanship.',
+    icon: 'check',
+  },
+  {
+    title: 'Funding-friendly',
+    copy: 'NDIS and aged-care friendly — we\'ll help make the process simple. [[ verify ]]',
+    icon: 'heart',
+  },
+];
+
+const icons: Record<string, string> = {
+  bolt: 'M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z',
+  shield: 'M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z',
+  pin: 'M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  sparkle: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z',
+  check: 'M20 6L9 17l-5-5',
+  heart: 'M12 21s-7-4.5-9.5-9C1 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23 8.5 21.5 12 19 16.5 12 21 12 21z',
+};
+---
+
+<section id="why" class="section bg-brand-black-pure">
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center reveal">
+      <p class="eyebrow">Why Ramp Ability</p>
+      <h2 class="mt-4 text-3xl sm:text-4xl">A ramp done right, by people who care</h2>
+      <p class="mt-4 text-brand-grey">
+        We make safe access simple — fast, compliant and built to last.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+      {
+        reasons.map((r) => (
+          <article class="card card-hover flex items-start gap-4">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d={icons[r.icon]} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="text-base font-bold">{r.title}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-brand-grey">{r.copy}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

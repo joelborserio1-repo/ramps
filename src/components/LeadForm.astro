@@ -1,0 +1,124 @@
+---
+import { CRM_WEBHOOK_URL, CRM_IFRAME_EMBED } from '../config';
+
+const useEmbed = CRM_IFRAME_EMBED.trim().length > 0;
+const inputClass =
+  'w-full rounded-xl border border-white/15 bg-brand-black-pure/60 px-4 py-3.5 text-base text-brand-white placeholder:text-brand-grey/70 transition-colors focus:border-brand-orange focus:bg-brand-black-pure min-h-[44px]';
+const labelClass = 'mb-1.5 block text-sm font-semibold text-brand-white';
+const errClass = 'hidden mt-1.5 text-sm text-orange-300';
+---
+
+<div
+  id="quote"
+  class="relative rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-card backdrop-blur-sm sm:p-8 scroll-mt-24"
+>
+  <!-- subtle orange glow on the card edge -->
+  <div
+    class="pointer-events-none absolute -inset-px rounded-3xl bg-orange-gradient opacity-[0.07] blur-sm"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative">
+    <div class="mb-5">
+      <h2 class="text-2xl font-extrabold sm:text-3xl">Get your free, no-obligation quote</h2>
+      <p class="mt-2 text-sm text-brand-grey">
+        Free on-site measure &amp; quote. We usually reply within 1 business hour.
+      </p>
+    </div>
+
+    {
+      useEmbed ? (
+        // CRM iframe embed slot (GoHighLevel / Pipeline Partners). Card styling
+        // wraps the embed so it stays on-brand.
+        <div class="overflow-hidden rounded-xl" set:html={CRM_IFRAME_EMBED} />
+      ) : (
+        <>
+          <form
+            id="lead-form"
+            data-endpoint={CRM_WEBHOOK_URL}
+            novalidate
+            class="space-y-4"
+            aria-describedby="form-reassure"
+          >
+            <div
+              id="form-error-banner"
+              role="alert"
+              class="hidden rounded-xl border border-orange-400/40 bg-orange-500/10 px-4 py-3 text-sm text-orange-200"
+            >
+              Sorry, something went wrong sending your details. Please call us instead — we'd love to help.
+            </div>
+
+            <div>
+              <label class={labelClass} for="name">Full name</label>
+              <input class={inputClass} id="name" name="name" type="text" autocomplete="name" placeholder="e.g. Sarah Thompson" required aria-required="true" />
+              <p class={errClass} id="err-name" role="alert" />
+            </div>
+
+            <div>
+              <label class={labelClass} for="phone">Phone</label>
+              <input class={inputClass} id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="e.g. 0400 000 000" required aria-required="true" />
+              <p class={errClass} id="err-phone" role="alert" />
+            </div>
+
+            <div>
+              <label class={labelClass} for="suburb">Suburb or postcode</label>
+              <input class={inputClass} id="suburb" name="suburb" type="text" autocomplete="address-level2" placeholder="e.g. Charlestown / 2290" required aria-required="true" />
+              <p class={errClass} id="err-suburb" role="alert" />
+            </div>
+
+            <div>
+              <label class={labelClass} for="service">Service type</label>
+              <select class={inputClass} id="service" name="service" required aria-required="true">
+                <option value="" disabled selected>Choose one…</option>
+                <option value="Residential">Residential</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Aged Care">Aged Care</option>
+              </select>
+              <p class={errClass} id="err-service" role="alert" />
+            </div>
+
+            <div>
+              <label class={labelClass} for="message">
+                Message or timeframe <span class="font-normal text-brand-grey">(optional)</span>
+              </label>
+              <textarea class={inputClass} id="message" name="message" rows="2" placeholder="e.g. Need a ramp for Mum's front steps soon" />
+            </div>
+
+            {/* Honeypot — hidden from humans, catches bots. */}
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <label for="company_website">Company website (leave blank)</label>
+              <input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <button type="submit" class="btn-primary relative w-full text-lg">
+              <span class="btn-label">Get My Free Quote</span>
+              <span class="btn-spinner absolute inset-0 hidden items-center justify-center" aria-hidden="true">
+                <svg class="h-6 w-6 animate-spin text-brand-black-pure" viewBox="0 0 24 24" fill="none">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z" />
+                </svg>
+              </span>
+            </button>
+
+            <p id="form-reassure" class="text-center text-xs text-brand-grey">
+              Free, no-obligation quote. Your details are only used to contact you about your enquiry.
+            </p>
+          </form>
+
+          <div id="form-success" class="hidden text-center py-6 focus:outline-none">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-orange-gradient">
+              <svg class="h-7 w-7 text-brand-black-pure" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-extrabold">Thanks — we've got your details!</h3>
+            <p class="mt-2 text-brand-grey">
+              One of our local team will call you shortly to arrange your free on-site measure and quote.
+            </p>
+          </div>
+        </>
+      )
+    }
+  </div>
+</div>

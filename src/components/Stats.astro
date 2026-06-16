@@ -1,0 +1,31 @@
+---
+import { COUNTERS } from '../config';
+
+// Strip non-numeric placeholder noise so the counter has something to parse.
+// When real numbers are in config, the count-up animates to them.
+function numeric(value: string): string {
+  const m = value.match(/[\d.]+/);
+  return m ? m[0] : '0';
+}
+---
+
+<section aria-label="By the numbers" class="section bg-brand-black-pure">
+  <div class="container-page">
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-4" data-stagger>
+      {
+        COUNTERS.map((c) => (
+          <div class="text-center">
+            <div class="flex items-baseline justify-center gap-0.5 text-4xl font-extrabold text-gradient-orange sm:text-5xl">
+              <span data-counter={numeric(c.value)}>0</span>
+              <span>{c.suffix}</span>
+            </div>
+            <p class="mx-auto mt-3 max-w-[14rem] text-sm text-brand-grey">{c.label}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-8 text-center text-[11px] text-brand-grey/60">
+      {/* All figures are placeholders — confirm with the client (src/config.ts COUNTERS). */}
+    </p>
+  </div>
+</section>

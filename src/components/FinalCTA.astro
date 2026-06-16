@@ -1,0 +1,52 @@
+---
+import { CONTACT } from '../config';
+---
+
+<section class="relative overflow-hidden bg-brand-black-pure py-20 sm:py-24">
+  <div class="container-page">
+    <div
+      class="relative overflow-hidden rounded-3xl bg-orange-gradient px-6 py-14 text-center shadow-orange-glow-lg sm:px-12 reveal"
+    >
+      <!-- subtle ramp geometry overlay -->
+      <div class="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+        <svg class="absolute -right-10 -top-10 h-64 w-64 text-brand-black-pure" viewBox="0 0 64 56" fill="none">
+          <rect x="4" y="40" width="11" height="12" rx="1.5" fill="currentColor" />
+          <rect x="19" y="30" width="11" height="22" rx="1.5" fill="currentColor" />
+          <rect x="34" y="20" width="11" height="32" rx="1.5" fill="currentColor" />
+          <rect x="49" y="8" width="11" height="44" rx="1.5" fill="currentColor" />
+        </svg>
+      </div>
+
+      <div class="relative">
+        <h2 class="mx-auto max-w-2xl text-3xl font-extrabold text-brand-black-pure sm:text-4xl">
+          Ready for safe, easy access? Get your free quote today.
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl text-brand-black-pure/80">
+          Free on-site measure and quote from a local, fully-insured Hunter team. No obligation.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="#quote"
+            class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-brand-black-pure px-8 py-4 text-lg font-bold text-brand-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-black"
+          >
+            Get My Free Quote
+          </a>
+          <a
+            href={`tel:${CONTACT.phone.tel}`}
+            data-call-source="final-cta"
+            class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border-2 border-brand-black-pure px-7 py-4 text-lg font-bold text-brand-black-pure transition-colors hover:bg-brand-black-pure hover:text-brand-white"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M3 5.5C3 4.12 4.12 3 5.5 3h1.4c.5 0 .94.33 1.07.81l.9 3.3a1.1 1.1 0 0 1-.3 1.07l-1.3 1.3a14.5 14.5 0 0 0 5.95 5.95l1.3-1.3a1.1 1.1 0 0 1 1.07-.3l3.3.9c.48.13.81.57.81 1.07v1.4c0 1.38-1.12 2.5-2.5 2.5C10.6 21 3 13.4 3 5.5Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+            </svg>
+            Call {CONTACT.phone.display}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

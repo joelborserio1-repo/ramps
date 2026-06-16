@@ -1,0 +1,53 @@
+---
+const steps = [
+  {
+    n: '1',
+    title: 'Request your free quote',
+    copy: 'Fill in the 60-second form or call us. Tell us where you need access.',
+  },
+  {
+    n: '2',
+    title: 'We measure on-site & recommend',
+    copy: 'A local expert visits, measures up and recommends the right ramp for you — free.',
+  },
+  {
+    n: '3',
+    title: 'Fast, tidy installation',
+    copy: 'We build and install your ramp quickly and cleanly. Ready to use straight away.',
+  },
+];
+---
+
+<section id="how" class="section bg-brand-black">
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 class="mt-4 text-3xl sm:text-4xl">Safe access in three simple steps</h2>
+    </div>
+
+    <ol class="relative mt-14 grid gap-10 md:grid-cols-3" data-stagger>
+      <!-- connecting ramp line (desktop) -->
+      <div
+        class="pointer-events-none absolute left-[16%] right-[16%] top-7 hidden h-0.5 bg-gradient-to-r from-brand-orange/0 via-brand-orange/60 to-brand-orange/0 md:block"
+        aria-hidden="true"
+      >
+      </div>
+
+      {
+        steps.map((step) => (
+          <li class="relative flex flex-col items-center text-center">
+            <span class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-gradient text-2xl font-extrabold text-brand-black-pure shadow-orange-glow">
+              {step.n}
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{step.title}</h3>
+            <p class="mt-2 max-w-xs text-sm leading-relaxed text-brand-grey">{step.copy}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-12 text-center reveal">
+      <a href="#quote" class="btn-primary text-lg">Start with a free quote</a>
+    </div>
+  </div>
+</section>

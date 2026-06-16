@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import WhyChoose from '../components/WhyChoose.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Stats from '../components/Stats.astro';
+import Reviews from '../components/Reviews.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+    <TrustBar />
+    <Services />
+    <WhyChoose />
+    <HowItWorks />
+    <Stats />
+    <Reviews />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<script>
+  import { initAnimations } from '../scripts/animations';
+  import { initLeadForm } from '../scripts/form';
+  import { initReviewsCarousel } from '../scripts/reviews';
+  import { initCallTracking } from '../scripts/tracking';
+
+  const boot = () => {
+    initAnimations();
+    initLeadForm();
+    initReviewsCarousel();
+    initCallTracking();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+</script>
