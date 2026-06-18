@@ -8,18 +8,28 @@ quote** — via the form or a phone call.
 Live domain: **[newcastleramps.au](https://newcastleramps.au)** (all Google Ads
 land here; `hunterramps.au` redirects to it).
 
-### Pages & Google Ads ad-group mapping
-Each page is message-matched to a campaign ad group for Quality Score:
+> **Current site = `public/index.html`.** The live landing page is a single,
+> self-contained static HTML file (orange / ink / paper theme) served verbatim
+> from `public/`. It includes the GoHighLevel form embed, real testimonials,
+> and `LocalBusiness` + `FAQPage` structured data in the head. `npm run build`
+> (Astro) simply copies `public/` to `dist/` and emits the branded `404`.
+>
+> The `src/` Astro components below (Hero, FAQ, etc., teal theme) are the
+> earlier multi-page version, kept for reference. They are **not** part of the
+> current build — only `public/index.html` and `src/pages/404.astro` are.
 
-| Page | URL | Ad group(s) |
-|---|---|---|
-| Home (Local / Near-Me) | `/` | AG1 Local Service · AG3 Near Me |
-| NDIS | `/ndis/` | AG2 NDIS |
-| Aged Care / Elderly | `/aged-care/` | AG4 Aged Care |
-| Recycled-Rubber & Types | `/rubber-ramps/` | AG5 Product (Rubber & Threshold) |
+### Coverage
+Newcastle · the Hunter · Central Coast · Greater Sydney. Click-to-call is
+**0468 170 347**; enquiries route to the GoHighLevel "Ramp Enquiries" form.
 
-All four pages share the **same GHL lead form** (one conversion source of
-truth) and the same click-to-call number, **0468 170 347**.
+<details>
+<summary>Earlier multi-page (Astro) version — reference only</summary>
+
+The repo previously built four message-matched Astro pages (home, `/ndis`,
+`/aged-care`, `/rubber-ramps`) for Google Ads ad groups. Those page files were
+removed when the single-page design replaced them; the components remain in
+`src/components` if you ever want to rebuild that structure.
+</details>
 
 ---
 

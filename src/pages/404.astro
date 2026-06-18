@@ -1,36 +1,70 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import MobileActionBar from '../components/MobileActionBar.astro';
-import ClientBoot from '../components/ClientBoot.astro';
-import { CONTACT } from '../config';
+// Self-contained, on-brand 404 (matches the new orange/ink/paper design).
+// Kept as the single Astro route so `astro build` produces dist/ alongside the
+// static public/index.html homepage.
+const tel = '+61468170347';
+const phone = '0468 170 347';
 ---
 
-<Layout title="Page not found | Ramp Ability" noindex={true}>
-  <Header />
-  <main class="flex min-h-[70vh] items-center justify-center bg-white px-5 pt-28 pb-20 text-center">
-    <div class="mx-auto max-w-xl">
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found | Ramp Ability</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#16130F" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Public+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #16130f; --orange: #f26f21; --orange-d: #d85e15;
+        --paper: #f7f3ec; --text: #1c1813; --muted: #7c7264;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Public Sans', system-ui, sans-serif; background: var(--paper);
+        color: var(--text); min-height: 100vh; display: flex; align-items: center;
+        justify-content: center; text-align: center; padding: 40px 22px;
+        background-image: repeating-linear-gradient(135deg, transparent 0 13px, rgba(0,0,0,.015) 13px 15px);
+      }
+      .box { max-width: 560px; }
+      .eyebrow {
+        font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;
+        letter-spacing: .18em; text-transform: uppercase; color: var(--orange);
+      }
+      h1 {
+        font-family: 'Archivo', sans-serif; font-weight: 800; line-height: 1.05;
+        letter-spacing: -.02em; font-size: clamp(34px, 6vw, 52px); margin: 14px 0 16px;
+      }
+      p { color: var(--muted); font-size: 18px; margin-bottom: 28px; }
+      .acts { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 17px;
+        padding: 15px 26px; border-radius: 12px; text-decoration: none; min-height: 52px;
+        border: 2px solid transparent;
+      }
+      .primary { background: var(--orange); color: #fff; }
+      .primary:hover { background: var(--orange-d); }
+      .ghost { color: var(--ink); border-color: rgba(22,19,15,.2); }
+      .ghost:hover { border-color: var(--orange); color: var(--orange); }
+    </style>
+  </head>
+  <body>
+    <div class="box">
       <p class="eyebrow">Error 404</p>
-      <h1 class="mt-5 text-4xl sm:text-5xl">This page took a wrong turn.</h1>
-      <p class="mt-4 text-lg text-brand-slate">
-        The page you’re after isn’t here — but we can still help you get safe, easy access.
-        Head back home for a free on-site measure and quote.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/" class="btn-primary text-lg">Back to home</a>
-        <a href={`tel:${CONTACT.phone.tel}`} data-call-source="404" class="btn-ghost">
-          Call {CONTACT.phone.display}
-        </a>
+      <h1>This page took a wrong turn.</h1>
+      <p>The page you’re after isn’t here — but we can still help you get safe, easy access. Head back home for a free on-site measure and quote.</p>
+      <div class="acts">
+        <a class="btn primary" href="/">Back to home</a>
+        <a class="btn ghost" href={`tel:${tel}`}>Call {phone}</a>
       </div>
-      <nav class="mt-10 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-brand-slate" aria-label="Popular pages">
-        <a href="/rubber-ramps/" class="hover:text-brand-teal-deep">Recycled-rubber ramps</a>
-        <a href="/ndis/" class="hover:text-brand-teal-deep">NDIS ramps</a>
-        <a href="/aged-care/" class="hover:text-brand-teal-deep">Aged-care ramps</a>
-      </nav>
     </div>
-  </main>
-  <Footer />
-  <MobileActionBar />
-  <ClientBoot />
-</Layout>
+  </body>
+</html>
