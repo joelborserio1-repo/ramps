@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://newcastleramps.au/sitemap.xml
+Sitemap: https://newcastleramps.com.au/sitemap.xml

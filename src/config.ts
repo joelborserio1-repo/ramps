@@ -11,8 +11,8 @@ export const SITE = {
   name: 'Ramp Ability',
   // Primary domain = the Google Ads final URL. hunterramps.au redirects here
   // (see public/_redirects).
-  domain: 'newcastleramps.au',
-  url: 'https://newcastleramps.au',
+  domain: 'newcastleramps.com.au',
+  url: 'https://newcastleramps.com.au',
   tagline: 'Residential · Aged Care · Commercial · NDIS',
   region: 'Newcastle & the Hunter',
 };
@@ -26,7 +26,7 @@ export const CONTACT = {
     tel: '+61468170347',
   },
   // [[ EMAIL ]]
-  email: '[[ EMAIL ]]', // e.g. 'hello@newcastleramps.au'
+  email: '[[ EMAIL ]]', // e.g. 'hello@newcastleramps.com.au'
 };
 
 /* --- CRM / lead destination --------------------------------------------- */

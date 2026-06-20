@@ -1,7 +1,7 @@
 # Cloudflare Workers static-assets redirects.
 #
 # IMPORTANT: Workers Assets only allows RELATIVE (same-origin) targets here.
-# Cross-domain redirects (hunterramps.au -> newcastleramps.au) CANNOT live in
+# Cross-domain redirects (hunterramps.au -> newcastleramps.com.au) CANNOT live in
 # this file — they must be a zone-level Redirect Rule on the hunterramps.au
 # zone in the Cloudflare dashboard (see README "Redirect hunterramps.au").
 #

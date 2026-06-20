@@ -94,7 +94,7 @@ export function initLeadForm() {
 
     const data = Object.fromEntries(new FormData(form).entries());
     delete data.company_website;
-    data.source = 'newcastleramps.au';
+    data.source = 'newcastleramps.com.au';
     data.submitted_at = new Date().toISOString();
 
     setLoading(true);
