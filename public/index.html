@@ -222,7 +222,33 @@
   .mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:0;background:var(--ink);border-top:1px solid var(--inkline)}
   .mbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 8px;font-family:var(--display);font-weight:800;font-size:16px;text-decoration:none}
   .mbar .call{color:#fff}.mbar .call svg{fill:var(--orange)}
+  .mbar .wa{color:#fff}.mbar .wa svg{fill:#25D366}
   .mbar .quote{background:var(--orange);color:#fff}
+
+  /* floating contact buttons (desktop) */
+  .fab{position:fixed;right:20px;bottom:22px;z-index:55;display:flex;flex-direction:column;gap:13px}
+  .fab a{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 28px -8px rgba(0,0,0,.5);transition:transform .12s ease}
+  .fab a:hover{transform:translateY(-3px)}
+  .fab .wa{background:#25D366}
+  .fab .callf{background:var(--orange)}
+  .fab svg{fill:#fff}
+
+  /* stats / credibility band */
+  .stats{background:var(--ink);background-image:var(--tread);color:#fff;border-bottom:1px solid var(--inkline)}
+  .stats .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:28px 0;text-align:center}
+  .stats .n{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.2vw,36px);color:var(--orange);line-height:1}
+  .stats .l{color:var(--muted-d);font-size:13.5px;margin-top:7px}
+
+  /* google rating badge */
+  .gbadge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px;color:var(--text)}
+  .gbadge .g{font-family:var(--display);font-weight:900}
+  .gbadge .st{color:var(--orange);letter-spacing:1px}
+
+  /* project gallery (enable when real photos are added) */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery figure{margin:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff}
+  .gallery img{width:100%;height:230px;object-fit:cover;display:block}
+  .gallery figcaption{padding:11px 14px;font-size:14px;font-weight:600;color:var(--text)}
 
   .reveal{}
 
@@ -232,6 +258,7 @@
     .who-grid{grid-template-columns:1fr 1fr}
     .area{grid-template-columns:1fr;gap:24px}
     .foot-grid{grid-template-columns:1fr;gap:26px}
+    .gallery{grid-template-columns:1fr 1fr}
     .top .area-pill{display:none}
   }
   @media (max-width:620px){
@@ -239,7 +266,10 @@
     .top .telbig span{display:none}
     .who-grid{grid-template-columns:1fr}
     .form-row{grid-template-columns:1fr}
+    .stats .grid4{grid-template-columns:1fr 1fr;gap:22px 12px}
+    .gallery{grid-template-columns:1fr}
     .mbar{display:flex}
+    .fab{display:none}        /* mobile uses the bottom action bar instead */
     .cta .row{flex-direction:column;align-items:flex-start}
   }
   @media (prefers-reduced-motion:reduce){
@@ -281,7 +311,7 @@
         <a class="btn btn-primary" href="#quote">Get my free quote</a>
         <a class="btn btn-ghost" href="tel:+61468170347"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>Call 0468 170 347</a>
       </div>
-      <p class="heromini"><span class="stars">★★★★★</span> Trusted across the Hunter, Central Coast &amp; Sydney</p>
+      <p class="heromini"><span class="stars">★★★★★</span> 5.0 on Google · Trusted across the Hunter, Central Coast &amp; Sydney</p>
     </div>
 
     <!-- ===== GHL (LeadConnector) form embed ===== -->
@@ -317,6 +347,16 @@
     <span class="item"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9m1 14h-2v-2h2zm0-4h-2V7h2z"/></svg>Recycled tyre rubber</span>
     <span class="item"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10"/></svg>NDIS-friendly</span>
     <span class="item"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M3 13h2l2-7 4 14 3-9 2 2h6"/></svg>Obligation-free quote</span>
+  </div>
+</div>
+
+<!-- ===== STATS / CREDIBILITY BAND ===== -->
+<div class="stats">
+  <div class="wrap grid4">
+    <div><div class="n">10,000+</div><div class="l">Ramps installed</div></div>
+    <div><div class="n">9 yrs</div><div class="l">Serving NSW</div></div>
+    <div><div class="n">★ 5.0</div><div class="l">Google rating</div></div>
+    <div><div class="n">100%</div><div class="l">Australian-owned</div></div>
   </div>
 </div>
 
@@ -377,6 +417,7 @@
     <div class="sechead reveal">
       <span class="eyebrow">What people say</span>
       <h2>Trusted by families across NSW.</h2>
+      <p style="margin-top:14px"><span class="gbadge"><span class="st">★★★★★</span> <span class="g">5.0</span> on Google · real customer reviews</span></p>
     </div>
     <div class="quotes">
       <div class="q reveal"><div class="st">★★★★★</div><p>"Thanks for making a difference to our lives, allowing a safe exit and entrance to my parents' house to mobilise our father in his wheelchair. Your innovative approach to a complex task is very much appreciated."</p><div class="who">Con Kellis<span>Earlwood, Sydney</span></div></div>
@@ -385,6 +426,35 @@
     </div>
   </div>
 </section>
+
+<!-- ============================================================================
+     OUR RECENT WORK — real project gallery (competitor "Ramp Assist" uses this
+     to great effect). READY TO GO LIVE:
+       1. Add 6 real install photos to /public/projects/ using the file names
+          referenced below (≈1200x800, .jpg/.webp). See public/projects/README.txt.
+       2. Delete the two comment markers (the "<!--" just below and its "-->")
+          so the section renders.
+     ⚠️ Use REAL Ramp Ability installs only — never stock/AI images as "our work".
+     ============================================================================ -->
+<!--
+<section class="pad">
+  <div class="wrap">
+    <div class="sechead reveal" style="margin:0 auto 38px;text-align:center">
+      <span class="eyebrow">Our recent work</span>
+      <h2>Real ramps, installed across Newcastle &amp; the Hunter.</h2>
+      <p>A few of the access ramps our team has designed, built and installed.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="/projects/residential-wheelchair-ramp.jpg" alt="Residential wheelchair access ramp installed in Newcastle" loading="lazy"><figcaption>Residential wheelchair ramp · Newcastle</figcaption></figure>
+      <figure><img src="/projects/threshold-ramp.jpg" alt="Recycled-rubber threshold ramp at a front door" loading="lazy"><figcaption>Threshold ramp</figcaption></figure>
+      <figure><img src="/projects/entry-access-ramp.jpg" alt="Front entry access ramp installation" loading="lazy"><figcaption>Entry access ramp</figcaption></figure>
+      <figure><img src="/projects/ndis-ramp.jpg" alt="NDIS access ramp project in the Hunter" loading="lazy"><figcaption>NDIS project · the Hunter</figcaption></figure>
+      <figure><img src="/projects/aged-care-ramp.jpg" alt="Aged-care access ramp for safe entry" loading="lazy"><figcaption>Aged-care access</figcaption></figure>
+      <figure><img src="/projects/before-after.jpg" alt="Before and after access ramp installation" loading="lazy"><figcaption>Before &amp; after</figcaption></figure>
+    </div>
+  </div>
+</section>
+-->
 
 <!-- ===== SERVICE AREA ===== -->
 <section class="pad">
@@ -482,10 +552,21 @@
   <div class="wrap foot-bot">© Ramp Ability. All rights reserved. Residential · Commercial · Aged Care.</div>
 </footer>
 
+<!-- ===== FLOATING CONTACT (desktop) ===== -->
+<div class="fab">
+  <a class="wa" href="https://wa.me/61468170347?text=Hi%20Ramp%20Ability%2C%20I%27d%20like%20a%20free%20quote%20for%20an%20access%20ramp." target="_blank" rel="noopener" aria-label="Message Ramp Ability on WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7.7.7-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10.2-9.9 10.2zm5.5-7.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+  </a>
+  <a class="callf" href="tel:+61468170347" aria-label="Call Ramp Ability on 0468 170 347">
+    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>
+  </a>
+</div>
+
 <!-- ===== STICKY MOBILE BAR ===== -->
 <nav class="mbar" aria-label="Quick actions">
-  <a class="call" href="tel:+61468170347"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>Call us</a>
-  <a class="quote" href="#quote">Get free quote</a>
+  <a class="call" href="tel:+61468170347"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>Call</a>
+  <a class="wa" href="https://wa.me/61468170347?text=Hi%20Ramp%20Ability%2C%20I%27d%20like%20a%20free%20quote%20for%20an%20access%20ramp." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7.7.7-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10.2-9.9 10.2z"/></svg>WhatsApp</a>
+  <a class="quote" href="#quote">Quote</a>
 </nav>
 
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
