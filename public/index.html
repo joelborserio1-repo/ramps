@@ -242,11 +242,17 @@
   .gbadge .g{font-family:var(--display);font-weight:900}
   .gbadge .st{color:var(--orange);letter-spacing:1px}
 
-  /* project gallery (enable when real photos are added) */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .gallery figure{margin:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff}
-  .gallery img{width:100%;height:230px;object-fit:cover;display:block}
+  /* project gallery — one-row swipeable slider */
+  .galwrap{position:relative}
+  .gallery{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 2px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .gallery::-webkit-scrollbar{display:none}
+  .gallery figure{margin:0;flex:0 0 calc((100% - 28px)/3);scroll-snap-align:start;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff}
+  .gallery img{width:100%;height:240px;object-fit:cover;display:block}
   .gallery figcaption{padding:11px 14px;font-size:14px;font-weight:600;color:var(--text)}
+  .galbtn{position:absolute;top:42%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--white);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 12px 26px -10px rgba(0,0,0,.4);z-index:2}
+  .galbtn:hover{border-color:var(--orange);color:var(--orange)}
+  .galbtn.prev{left:-12px}.galbtn.next{right:-12px}
+  .galbtn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2}
 
   .reveal{}
 
@@ -256,7 +262,7 @@
     .who-grid{grid-template-columns:1fr 1fr}
     .area{grid-template-columns:1fr;gap:24px}
     .foot-grid{grid-template-columns:1fr;gap:26px}
-    .gallery{grid-template-columns:1fr 1fr}
+    .gallery figure{flex-basis:calc((100% - 14px)/2)}
     .top .area-pill{display:none}
   }
   @media (max-width:620px){
@@ -265,7 +271,8 @@
     .who-grid{grid-template-columns:1fr}
     .form-row{grid-template-columns:1fr}
     .stats .grid4{grid-template-columns:1fr 1fr;gap:22px 12px}
-    .gallery{grid-template-columns:1fr}
+    .gallery figure{flex-basis:86%}
+    .galbtn{display:none}
     .mbar{display:flex}
     .fab{display:none}        /* mobile uses the bottom action bar instead */
     .cta .row{flex-direction:column;align-items:flex-start}
@@ -433,12 +440,17 @@
       <h2>Real ramps, installed across Newcastle &amp; the Hunter.</h2>
       <p>A few of the recycled-rubber access ramps our team has built and installed.</p>
     </div>
-    <div class="gallery">
-      <figure><img src="/projects/threshold-ramp.jpg" alt="Recycled-rubber threshold ramp at a sliding glass door" loading="lazy"><figcaption>Threshold ramp · residential entry</figcaption></figure>
-      <figure><img src="/projects/commercial-entrance-ramps.jpg" alt="Recycled-rubber access ramps along a commercial building entrance" loading="lazy"><figcaption>Commercial entrance ramps</figcaption></figure>
-      <figure><img src="/projects/commercial-entry-ramp.jpg" alt="Wide recycled-rubber access ramp at a commercial glass-door entry" loading="lazy"><figcaption>Commercial entry access</figcaption></figure>
-      <figure><img src="/projects/safety-edge-ramp.jpg" alt="Recycled-rubber access ramp with a high-visibility yellow safety edge" loading="lazy"><figcaption>High-visibility safety edge</figcaption></figure>
-      <figure><img src="/projects/residential-handrail-ramp.webp" alt="Long recycled-rubber access ramp with stainless-steel handrail to a home entrance" loading="lazy"><figcaption>Residential ramp with handrail</figcaption></figure>
+    <div class="galwrap">
+      <button class="galbtn prev" type="button" data-gal="-1" aria-label="Previous projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="gallery" id="rampGallery">
+        <figure><img src="/projects/threshold-ramp.jpg" alt="Recycled-rubber threshold ramp at a sliding glass door" loading="lazy"><figcaption>Threshold ramp · residential entry</figcaption></figure>
+        <figure><img src="/projects/commercial-entrance-ramps.jpg" alt="Recycled-rubber access ramps along a commercial building entrance" loading="lazy"><figcaption>Commercial entrance ramps</figcaption></figure>
+        <figure><img src="/projects/commercial-entry-ramp.jpg" alt="Wide recycled-rubber access ramp at a commercial glass-door entry" loading="lazy"><figcaption>Commercial entry access</figcaption></figure>
+        <figure><img src="/projects/shop-entry-ramp.jpg" alt="Recycled-rubber access ramp with a yellow safety edge at a shop entrance" loading="lazy"><figcaption>Shop entry ramp</figcaption></figure>
+        <figure><img src="/projects/safety-edge-ramp.jpg" alt="Recycled-rubber access ramp with a high-visibility yellow safety edge" loading="lazy"><figcaption>High-visibility safety edge</figcaption></figure>
+        <figure><img src="/projects/residential-handrail-ramp.webp" alt="Long recycled-rubber access ramp with stainless-steel handrail to a home entrance" loading="lazy"><figcaption>Residential ramp with handrail</figcaption></figure>
+      </div>
+      <button class="galbtn next" type="button" data-gal="1" aria-label="Next projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
 </section>
@@ -552,6 +564,21 @@
   <a class="quote" href="#quote">Get free quote</a>
 </nav>
 
+<script>
+  // One-row project slider: arrow buttons scroll by one card width.
+  (function(){
+    var g=document.getElementById('rampGallery');
+    if(!g)return;
+    function step(dir){
+      var card=g.querySelector('figure');
+      var w=card?card.getBoundingClientRect().width+14:300;
+      g.scrollBy({left:dir*w,behavior:'smooth'});
+    }
+    document.querySelectorAll('[data-gal]').forEach(function(b){
+      b.addEventListener('click',function(){step(parseInt(b.getAttribute('data-gal'),10));});
+    });
+  })();
+</script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
