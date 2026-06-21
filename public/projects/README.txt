@@ -1,26 +1,25 @@
-PROJECT PHOTOS — go live with the "Our recent work" gallery
-===========================================================
+PROJECT PHOTOS — "Our recent work" gallery
+===========================================
 
-The gallery section is already built in public/index.html (commented out).
-To make it live:
+The gallery is built in public/index.html (currently commented out). To go live,
+add these 5 photos to THIS folder with these EXACT file names:
 
-1. Add 6 REAL Ramp Ability install photos to this folder, named exactly:
-     residential-wheelchair-ramp.jpg
-     threshold-ramp.jpg
-     entry-access-ramp.jpg
-     ndis-ramp.jpg
-     aged-care-ramp.jpg
-     before-after.jpg
-   Recommended: ~1200x800px, landscape, .jpg or .webp, compressed (<300KB each).
+  threshold-ramp.jpg            -> black threshold ramp at a sliding glass door
+                                   (residential, brick + tiled floor inside)
+  commercial-entrance-ramps.jpg -> row of rubber ramps along a commercial
+                                   building entrance (sunlit walkway)
+  commercial-entry-ramp.jpg     -> wide black ramp at a commercial glass-door
+                                   entry (brick building, people inside)
+  safety-edge-ramp.jpg          -> black ramp with a yellow high-visibility
+                                   safety edge / nosing at a doorway
+  residential-handrail-ramp.jpg -> long black ramp with stainless-steel handrail
+                                   leading to a home's door (yellow edge line)
 
-2. In public/index.html, find the "OUR RECENT WORK" block and remove the
-   comment markers ( "<!--" and "-->" ) around the <section>.
+Recommended: landscape, ~1200x800px, .jpg or .webp, compressed (<300KB each).
 
-3. Rebuild / redeploy.
+Then, in public/index.html, find the "OUR RECENT WORK" comment block and remove
+the HTML comment wrapper around the <section> so it renders. Rebuild / redeploy.
 
-You can add more tiles by copying a <figure> in that section.
+Add more tiles by copying a <figure> element in that section.
 
-⚠️ Use only genuine Ramp Ability project photos — never stock or AI images
-presented as "our work". Real visual proof is what builds trust and converts;
-fake imagery does the opposite (and is a compliance risk for an accessibility
-business). Before/after shots and wheelchair-access installs convert best.
+Use only genuine Ramp Ability project photos.
