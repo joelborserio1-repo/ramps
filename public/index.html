@@ -3,6 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     Google Tag Manager — REPLACE GTM-XXXXXXX with your container ID
+     (one place; the noscript tag just after <body> uses the same id).
+     ============================================================ -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
 <title>Access Ramps Newcastle, Central Coast &amp; Sydney | Ramp Ability — Free Measure &amp; Quote</title>
 <meta name="description" content="Custom recycled-rubber access ramps, measured on-site and installed by qualified tradespeople across Newcastle, the Hunter, the Central Coast and Greater Sydney. Free, no-obligation measure and quote.">
 
@@ -285,6 +296,11 @@
 </head>
 <body>
 
+<!-- Google Tag Manager (noscript) — REPLACE GTM-XXXXXXX with your container ID -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <!-- ===== TOP BAR ===== -->
 <header class="top">
   <div class="wrap row">
@@ -340,6 +356,9 @@
         data-layout-iframe-id="inline-SbG0i4EFyR7s7yB5ItOS"
         data-form-id="SbG0i4EFyR7s7yB5ItOS"
         title="Rampability — Quote Request"></iframe>
+      <p style="margin-top:12px;text-align:center;color:var(--muted);font-size:13px">
+        Form not loading? <a href="https://api.leadconnectorhq.com/widget/form/SbG0i4EFyR7s7yB5ItOS" target="_blank" rel="noopener" data-cta="form-open" style="color:var(--orange-d);font-weight:700;text-decoration:underline">Open the quote form&nbsp;›</a> &nbsp;·&nbsp; or call <a href="tel:+61468170347" data-call="form-fallback" style="color:var(--orange-d);font-weight:700">0468&nbsp;170&nbsp;347</a>
+      </p>
     </div>
   </div>
 </section>
@@ -576,6 +595,45 @@
     }
     document.querySelectorAll('[data-gal]').forEach(function(b){
       b.addEventListener('click',function(){step(parseInt(b.getAttribute('data-gal'),10));});
+    });
+  })();
+</script>
+<script>
+  // ===== Conversion events -> GTM dataLayer =====
+  // Wire these to Google Ads conversions inside GTM (recommended: count calls
+  // >=45-60s, and import the GHL form-submit conversion from GHL's side too —
+  // the cross-origin listener below is best-effort only).
+  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('DOMContentLoaded', function () {
+    // Click-to-call
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer.push({
+          event: 'click_to_call',
+          call_source: a.getAttribute('data-call') || 'site'
+        });
+      });
+    });
+    // "Get my free quote" CTA clicks (scroll-to-form)
+    document.querySelectorAll('a[href="#quote"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer.push({ event: 'cta_get_quote' });
+      });
+    });
+  });
+  // Best-effort GHL form-submission signal (cross-origin postMessage).
+  // GHL submits inside its iframe, so this may not always fire — keep the
+  // GHL-side conversion as the source of truth. De-duped to one push.
+  (function () {
+    var fired = false;
+    window.addEventListener('message', function (e) {
+      if (typeof e.origin !== 'string' || !/leadconnectorhq|msgsndr/.test(e.origin)) return;
+      var d = '';
+      try { d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data || ''); } catch (_) {}
+      if (!fired && /submit|submitted|formsubmit|"lead"/i.test(d)) {
+        fired = true;
+        window.dataLayer.push({ event: 'generate_lead', form_name: 'Rampability — Quote Request' });
+      }
     });
   })();
 </script>
